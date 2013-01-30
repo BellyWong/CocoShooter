@@ -9,6 +9,7 @@
 #import "CCActionGrid.h"
 #import "cocos2d.h"
 #import "GameOverLayer.h"
+#import "Enemy.h"
 
 @interface PlayingLayer : CCLayer
 

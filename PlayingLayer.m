@@ -33,18 +33,11 @@
 -(void)createEnemies
 {
     enemies = [[NSMutableArray alloc] init];
-    int screenHeight = [[CCDirector sharedDirector] winSize].height;
-    int screenWidth = [[CCDirector sharedDirector] winSize].width;
+//    int screenHeight = [[CCDirector sharedDirector] winSize].height;
+//    int screenWidth = [[CCDirector sharedDirector] winSize].width;
     // create 3 enemies.
     for(int i = 0 ;i < 3;i++){
-        
-        CCSprite *enemy = [CCSprite spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
-        int enemyOffset = enemy.contentSize.height;
-        int randHeight = enemyOffset +  (arc4random() % (screenHeight - enemyOffset));
-        
-        enemy.position = ccp(screenWidth + arc4random() % 150,randHeight);
-        enemy.rotation = 45;
-        
+        Enemy *enemy = [Enemy createSprite];
         [self addChild:enemy];
         [enemies addObject:enemy];
     }
