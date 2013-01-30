@@ -33,9 +33,6 @@
 -(void)createEnemies
 {
     enemies = [[NSMutableArray alloc] init];
-//    int screenHeight = [[CCDirector sharedDirector] winSize].height;
-//    int screenWidth = [[CCDirector sharedDirector] winSize].width;
-    // create 3 enemies.
     for(int i = 0 ;i < 3;i++){
         Enemy *enemy = [Enemy createSprite];
         [self addChild:enemy];
@@ -46,7 +43,6 @@
 -(Boolean )isCollidWithWall:(CCSprite *)enemy
 {
     if (enemy.position.x < enemy.contentSize.width/2){
-        NSLog(@"game over");
         return YES;
     }
     return NO;
@@ -55,10 +51,55 @@
 -(void)onEnter
 {
     [super onEnter];
+    self.isTouchEnabled = YES;
     [self createEnemies];
     [self scheduleUpdate];
 
     NSLog(@"onEnter");
+}
+-(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:[touch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    NSLog(@"location is %@",NSStringFromCGPoint(location));
+    NSLog(@"ended");
+    
+    
+    float realWidth =location.x ;
+    float realHeight = location.y;
+    
+    
+    float length = sqrtf((realWidth * realWidth ) + (realHeight * realHeight));
+    
+    
+    
+    
+    float diffY = realWidth/length;
+    float diffX = realHeight/length;
+    NSLog(@"diffY is %f",diffY);
+    
+    float a = atan2f(diffY, diffX);
+    
+    // a - 1.5 が角度になる
+    NSLog(@"location.y is %f",a - 1.5);
+    
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
 }
 
 
@@ -69,7 +110,7 @@
     CGPoint moveOffSet = ccp(-1,0);
     for (CCSprite *enemy in enemies){
         if ([self isCollidWithWall:enemy] == YES){
-            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
+//            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
         }else{
             enemy.position = ccpAdd(enemy.position, moveOffSet);
             

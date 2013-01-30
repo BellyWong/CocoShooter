@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		063B1F5116B91250005D20D7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 063B1F5016B91250005D20D7 /* Constants.m */; };
 		066BF8C216B8C60A0004B7CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066BF8C116B8C60A0004B7CB /* QuartzCore.framework */; };
 		066BF8C416B8C60A0004B7CB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066BF8C316B8C60A0004B7CB /* OpenGLES.framework */; };
 		066BF8C616B8C60A0004B7CB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066BF8C516B8C60A0004B7CB /* OpenAL.framework */; };
@@ -140,6 +141,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		063B1F4F16B91250005D20D7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		063B1F5016B91250005D20D7 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		066BF8BD16B8C60A0004B7CB /* CocoShooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		066BF8C116B8C60A0004B7CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		066BF8C316B8C60A0004B7CB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -434,6 +437,8 @@
 		066BF8B216B8C60A0004B7CB = {
 			isa = PBXGroup;
 			children = (
+				063B1F4F16B91250005D20D7 /* Constants.h */,
+				063B1F5016B91250005D20D7 /* Constants.m */,
 				066BFA6616B8DF320004B7CB /* GameOverLayer.h */,
 				066BFA6716B8DF320004B7CB /* GameOverLayer.m */,
 				066BF8D316B8C60A0004B7CB /* CocoShooter */,
@@ -1047,6 +1052,7 @@
 				066BFA5F16B8C91A0004B7CB /* PlayingLayer.m in Sources */,
 				066BFA6816B8DF320004B7CB /* GameOverLayer.m in Sources */,
 				066BFA7216B8E4020004B7CB /* Enemy.m in Sources */,
+				063B1F5116B91250005D20D7 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

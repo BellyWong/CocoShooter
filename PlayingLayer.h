@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "GameOverLayer.h"
 #import "Enemy.h"
+#import "Constants.h"
 
 @interface PlayingLayer : CCLayer
 
