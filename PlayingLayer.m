@@ -29,6 +29,13 @@
 -(void)onEnter
 {
     [super onEnter];
+    
+    CCSprite *enemy = [CCSprite spriteWithFile:@"enemy.png"];
+    enemy.position = ccp(100,100);
+    [self addChild:enemy];
+
+    
+    
     NSLog(@"onEnter");
 }
 @end

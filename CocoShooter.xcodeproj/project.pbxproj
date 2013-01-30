@@ -134,6 +134,7 @@
 		066BFA5016B8C60C0004B7CB /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA4F16B8C60C0004B7CB /* HelloWorldLayer.m */; };
 		066BFA5316B8C60C0004B7CB /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA5216B8C60C0004B7CB /* IntroLayer.m */; };
 		066BFA5F16B8C91A0004B7CB /* PlayingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA5E16B8C91A0004B7CB /* PlayingLayer.m */; };
+		066BFA6116B8D24E0004B7CB /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 066BFA6016B8D24E0004B7CB /* enemy.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -401,6 +402,7 @@
 		066BFA5216B8C60C0004B7CB /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		066BFA5D16B8C91A0004B7CB /* PlayingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingLayer.h; sourceTree = "<group>"; };
 		066BFA5E16B8C91A0004B7CB /* PlayingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingLayer.m; sourceTree = "<group>"; };
+		066BFA6016B8D24E0004B7CB /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +480,7 @@
 			children = (
 				066BF8D516B8C60A0004B7CB /* Default.png */,
 				066BF8D716B8C60A0004B7CB /* Default-Landscape~ipad.png */,
+				066BFA6016B8D24E0004B7CB /* enemy.png */,
 				066BF8D916B8C60A0004B7CB /* fps_images.png */,
 				066BF8DB16B8C60A0004B7CB /* fps_images-hd.png */,
 				066BF8DD16B8C60A0004B7CB /* fps_images-ipadhd.png */,
@@ -908,6 +911,7 @@
 				066BF8EA16B8C60A0004B7CB /* Icon@2x.png in Resources */,
 				066BF8ED16B8C60A0004B7CB /* iTunesArtwork in Resources */,
 				066BFA2B16B8C60C0004B7CB /* ChangeLog in Resources */,
+				066BFA6116B8D24E0004B7CB /* enemy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

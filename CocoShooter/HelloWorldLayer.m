@@ -47,6 +47,7 @@
         CCMenuItemFont *menuItem1 = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
             NSLog(@"tapped");
             [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[PlayingLayer scene] withColor:ccWHITE]];
+            
 
             
         }];
