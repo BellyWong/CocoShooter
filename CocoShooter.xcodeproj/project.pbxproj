@@ -400,8 +400,8 @@
 		066BFA4F16B8C60C0004B7CB /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		066BFA5116B8C60C0004B7CB /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		066BFA5216B8C60C0004B7CB /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
-		066BFA5D16B8C91A0004B7CB /* PlayingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingLayer.h; sourceTree = "<group>"; };
-		066BFA5E16B8C91A0004B7CB /* PlayingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingLayer.m; sourceTree = "<group>"; };
+		066BFA5D16B8C91A0004B7CB /* PlayingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingLayer.h; path = ../PlayingLayer.h; sourceTree = "<group>"; };
+		066BFA5E16B8C91A0004B7CB /* PlayingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingLayer.m; path = ../PlayingLayer.m; sourceTree = "<group>"; };
 		066BFA6016B8D24E0004B7CB /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -428,8 +428,6 @@
 		066BF8B216B8C60A0004B7CB = {
 			isa = PBXGroup;
 			children = (
-				066BFA5D16B8C91A0004B7CB /* PlayingLayer.h */,
-				066BFA5E16B8C91A0004B7CB /* PlayingLayer.m */,
 				066BF8D316B8C60A0004B7CB /* CocoShooter */,
 				066BF8C016B8C60A0004B7CB /* Frameworks */,
 				066BF8BE16B8C60A0004B7CB /* Products */,
@@ -463,7 +461,7 @@
 		066BF8D316B8C60A0004B7CB /* CocoShooter */ = {
 			isa = PBXGroup;
 			children = (
-				066BFA5C16B8C8E70004B7CB /* layers */,
+				066BFA5C16B8C8E70004B7CB /* views */,
 				066BFA4B16B8C60C0004B7CB /* AppDelegate.h */,
 				066BFA4C16B8C60C0004B7CB /* AppDelegate.m */,
 				066BFA5116B8C60C0004B7CB /* IntroLayer.h */,
@@ -839,13 +837,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		066BFA5C16B8C8E70004B7CB /* layers */ = {
+		066BFA5C16B8C8E70004B7CB /* views */ = {
 			isa = PBXGroup;
 			children = (
+				066BFA5D16B8C91A0004B7CB /* PlayingLayer.h */,
+				066BFA5E16B8C91A0004B7CB /* PlayingLayer.m */,
 				066BFA4E16B8C60C0004B7CB /* HelloWorldLayer.h */,
 				066BFA4F16B8C60C0004B7CB /* HelloWorldLayer.m */,
 			);
-			name = layers;
+			name = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
