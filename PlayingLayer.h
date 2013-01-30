@@ -8,6 +8,7 @@
 
 #import "CCActionGrid.h"
 #import "cocos2d.h"
+#import "GameOverLayer.h"
 
 @interface PlayingLayer : CCLayer
 

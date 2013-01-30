@@ -38,17 +38,25 @@
     // create 3 enemies.
     for(int i = 0 ;i < 3;i++){
         
-        CCSprite *enemy = [CCSprite spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 64, 64)];
+        CCSprite *enemy = [CCSprite spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
         int enemyOffset = enemy.contentSize.height;
-        
-        
         int randHeight = enemyOffset +  (arc4random() % (screenHeight - enemyOffset));
-        enemy.position = ccp(screenWidth + arc4random() % 200,randHeight);
+        
+        enemy.position = ccp(screenWidth + arc4random() % 150,randHeight);
         enemy.rotation = 45;
         
         [self addChild:enemy];
         [enemies addObject:enemy];
     }
+    
+}
+-(Boolean )isCollidWithWall:(CCSprite *)enemy
+{
+    if (enemy.position.x < enemy.contentSize.width/2){
+        NSLog(@"game over");
+        return YES;
+    }
+    return NO;
     
 }
 -(void)onEnter
@@ -67,7 +75,15 @@
     // moveEnemy
     CGPoint moveOffSet = ccp(-1,0);
     for (CCSprite *enemy in enemies){
-        enemy.position = ccpAdd(enemy.position, moveOffSet);
+        if ([self isCollidWithWall:enemy] == YES){
+            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
+        }else{
+            enemy.position = ccpAdd(enemy.position, moveOffSet);
+            
+        }
     }
 }
+
+
+
 @end

@@ -135,6 +135,8 @@
 		066BFA5316B8C60C0004B7CB /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA5216B8C60C0004B7CB /* IntroLayer.m */; };
 		066BFA5F16B8C91A0004B7CB /* PlayingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA5E16B8C91A0004B7CB /* PlayingLayer.m */; };
 		066BFA6116B8D24E0004B7CB /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 066BFA6016B8D24E0004B7CB /* enemy.png */; };
+		066BFA6416B8DC6E0004B7CB /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA6316B8DC6E0004B7CB /* Enemy.m */; };
+		066BFA6816B8DF320004B7CB /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA6716B8DF320004B7CB /* GameOverLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -403,6 +405,10 @@
 		066BFA5D16B8C91A0004B7CB /* PlayingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingLayer.h; path = ../PlayingLayer.h; sourceTree = "<group>"; };
 		066BFA5E16B8C91A0004B7CB /* PlayingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingLayer.m; path = ../PlayingLayer.m; sourceTree = "<group>"; };
 		066BFA6016B8D24E0004B7CB /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		066BFA6216B8DC6E0004B7CB /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		066BFA6316B8DC6E0004B7CB /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		066BFA6616B8DF320004B7CB /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverLayer.h; sourceTree = "<group>"; };
+		066BFA6716B8DF320004B7CB /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +434,8 @@
 		066BF8B216B8C60A0004B7CB = {
 			isa = PBXGroup;
 			children = (
+				066BFA6616B8DF320004B7CB /* GameOverLayer.h */,
+				066BFA6716B8DF320004B7CB /* GameOverLayer.m */,
 				066BF8D316B8C60A0004B7CB /* CocoShooter */,
 				066BF8C016B8C60A0004B7CB /* Frameworks */,
 				066BF8BE16B8C60A0004B7CB /* Products */,
@@ -463,12 +471,15 @@
 			children = (
 				066BFA5C16B8C8E70004B7CB /* views */,
 				066BFA4B16B8C60C0004B7CB /* AppDelegate.h */,
+				066BFA6516B8DC7D0004B7CB /* models */,
 				066BFA4C16B8C60C0004B7CB /* AppDelegate.m */,
 				066BFA5116B8C60C0004B7CB /* IntroLayer.h */,
 				066BFA5216B8C60C0004B7CB /* IntroLayer.m */,
 				066BF8D416B8C60A0004B7CB /* Resources */,
 				066BF8EE16B8C60A0004B7CB /* libs */,
 				066BFA4716B8C60C0004B7CB /* Supporting Files */,
+				066BFA6216B8DC6E0004B7CB /* Enemy.h */,
+				066BFA6316B8DC6E0004B7CB /* Enemy.m */,
 			);
 			path = CocoShooter;
 			sourceTree = "<group>";
@@ -848,6 +859,13 @@
 			name = views;
 			sourceTree = "<group>";
 		};
+		066BFA6516B8DC7D0004B7CB /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1027,6 +1045,8 @@
 				066BFA5016B8C60C0004B7CB /* HelloWorldLayer.m in Sources */,
 				066BFA5316B8C60C0004B7CB /* IntroLayer.m in Sources */,
 				066BFA5F16B8C91A0004B7CB /* PlayingLayer.m in Sources */,
+				066BFA6416B8DC6E0004B7CB /* Enemy.m in Sources */,
+				066BFA6816B8DF320004B7CB /* GameOverLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
