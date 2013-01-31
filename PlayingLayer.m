@@ -11,6 +11,7 @@
 @implementation PlayingLayer
 {
     NSMutableArray *enemies;
+    NSMutableArray *balls;
 }
 
 
@@ -21,7 +22,6 @@
 	
 	// 'layer' is an autorelease object.
 	PlayingLayer *layer = [PlayingLayer node];
-    NSLog(@"called");
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -34,9 +34,11 @@
 {
     enemies = [[NSMutableArray alloc] init];
     for(int i = 0 ;i < 3;i++){
-        Enemy *enemy = [[Enemy alloc] createSprite];
-        [self addChild:enemy];
-        [enemies addObject:enemy];
+        Enemy *enemy = [[Enemy alloc] init];
+        [enemy setup];
+        NSLog(@"enemy.sprite is %@",enemy.sprite);
+        [self addChild:enemy.sprite];
+        [enemies addObject:(Enemy *)enemy];
     }
     
 }
@@ -51,6 +53,7 @@
 -(void)onEnter
 {
     [super onEnter];
+    balls = [[NSMutableArray alloc] init];
     self.isTouchEnabled = YES;
     [self createEnemies];
     [self scheduleUpdate];
@@ -80,10 +83,16 @@
     float diffX = realHeight/length;
     NSLog(@"diffY is %f",diffY);
     
-    float a = atan2f(diffY, diffX);
+    float a = atan2f(diffY, diffX) -  1.5;
+    
+    Ball *ball = [[Ball alloc] init];
+    [ball setup];
+    [self addChild:ball.sprite];
+    [balls addObject:ball];
+    
     
     // a - 1.5 が角度になる
-    NSLog(@"location.y is %f",a - 1.5);
+    NSLog(@"location.y is %f",a);
     
     
     
@@ -106,8 +115,6 @@
 
 -(void)update:(ccTime *)time
 {
-    // moveEnemy
-    CGPoint moveOffSet = ccp(-1,0);
     for (Enemy *enemy in enemies){
         if ([self isCollidWithWall:enemy] == YES){
 //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
@@ -115,6 +122,10 @@
             [enemy move];
             
         }
+    }
+    
+    for(Ball *ball in balls){
+        [ball move];
     }
 }
 

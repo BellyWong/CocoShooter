@@ -138,6 +138,8 @@
 		066BFA6116B8D24E0004B7CB /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 066BFA6016B8D24E0004B7CB /* enemy.png */; };
 		066BFA6816B8DF320004B7CB /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA6716B8DF320004B7CB /* GameOverLayer.m */; };
 		066BFA7216B8E4020004B7CB /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA7116B8E4020004B7CB /* Enemy.m */; };
+		06DC3F8F16BA6CC600037B70 /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DC3F8E16BA6CC600037B70 /* Ball.m */; };
+		06DC3F9216BA6F1200037B70 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 06DC3F9116BA6F1200037B70 /* ball.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -412,6 +414,9 @@
 		066BFA6716B8DF320004B7CB /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
 		066BFA7016B8E4020004B7CB /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = ../Enemy.h; sourceTree = "<group>"; };
 		066BFA7116B8E4020004B7CB /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enemy.m; path = ../Enemy.m; sourceTree = "<group>"; };
+		06DC3F8D16BA6CC600037B70 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
+		06DC3F8E16BA6CC600037B70 /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ball.m; sourceTree = "<group>"; };
+		06DC3F9116BA6F1200037B70 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,6 +442,8 @@
 		066BF8B216B8C60A0004B7CB = {
 			isa = PBXGroup;
 			children = (
+				06DC3F8D16BA6CC600037B70 /* Ball.h */,
+				06DC3F8E16BA6CC600037B70 /* Ball.m */,
 				063B1F4F16B91250005D20D7 /* Constants.h */,
 				063B1F5016B91250005D20D7 /* Constants.m */,
 				066BFA6616B8DF320004B7CB /* GameOverLayer.h */,
@@ -494,6 +501,7 @@
 				066BF8D716B8C60A0004B7CB /* Default-Landscape~ipad.png */,
 				066BFA6016B8D24E0004B7CB /* enemy.png */,
 				066BF8D916B8C60A0004B7CB /* fps_images.png */,
+				06DC3F9116BA6F1200037B70 /* ball.png */,
 				066BF8DB16B8C60A0004B7CB /* fps_images-hd.png */,
 				066BF8DD16B8C60A0004B7CB /* fps_images-ipadhd.png */,
 				066BF8DF16B8C60A0004B7CB /* Icon-72.png */,
@@ -935,6 +943,7 @@
 				066BF8ED16B8C60A0004B7CB /* iTunesArtwork in Resources */,
 				066BFA2B16B8C60C0004B7CB /* ChangeLog in Resources */,
 				066BFA6116B8D24E0004B7CB /* enemy.png in Resources */,
+				06DC3F9216BA6F1200037B70 /* ball.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,6 +1062,7 @@
 				066BFA6816B8DF320004B7CB /* GameOverLayer.m in Sources */,
 				066BFA7216B8E4020004B7CB /* Enemy.m in Sources */,
 				063B1F5116B91250005D20D7 /* Constants.m in Sources */,
+				06DC3F8F16BA6CC600037B70 /* Ball.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

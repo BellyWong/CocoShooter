@@ -11,6 +11,7 @@
 #import "GameOverLayer.h"
 #import "Enemy.h"
 #import "Constants.h"
+#import "Ball.h"
 
 @interface PlayingLayer : CCLayer
 
