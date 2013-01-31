@@ -11,18 +11,20 @@
 @implementation Ball
 {
     CGPoint vec;
+    CGPoint gravity;
     CCSprite *ball;
+    float force;
+    float friction;
+    
 }
 -(void)setup
 {
     
-    vec = ccp(0,0);
-    int screenHeight = [[CCDirector sharedDirector] winSize].height;
-    int screenWidth = [[CCDirector sharedDirector] winSize].width;
+    gravity = ccp(0,-1);
+    vec = ccp(0,1);
+    friction = 0.9;
     self.sprite = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 50, 50)];
     self.sprite.position = ccp(30,30);
-    
-    
 }
 
 -(id)init
@@ -36,10 +38,13 @@
 }
 -(void)move
 {
-    NSLog(@"moved");
+    gravity.y -= 0.1;
+    force  = 10;
+    vec =  ccp(force*cosf(self.angle) * friction ,-1*force *sinf(self.angle));
     
-//    X軸方向の移動量 = cos (現在向いている方向) × 進行速度
-//    Y軸方向の移動量　= sin (現在向いている方向) × 進行速度
+    self.sprite.position = ccpAdd(self.sprite.position,ccpAdd(vec,gravity));
+    
+    
     
 }
 

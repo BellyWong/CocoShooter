@@ -13,6 +13,7 @@
 
 
 @property(nonatomic,strong) CCSprite *sprite;
+@property(nonatomic,assign) float angle;
 -(CCSprite *)createSprite;
 -(void)move;
 -(void)setup;

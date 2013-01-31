@@ -81,18 +81,18 @@
     
     float diffY = realWidth/length;
     float diffX = realHeight/length;
-    NSLog(@"diffY is %f",diffY);
     
+    
+    // a - 1.5 が角度になる
     float a = atan2f(diffY, diffX) -  1.5;
     
     Ball *ball = [[Ball alloc] init];
+    ball.angle = a;
     [ball setup];
     [self addChild:ball.sprite];
     [balls addObject:ball];
     
     
-    // a - 1.5 が角度になる
-    NSLog(@"location.y is %f",a);
     
     
     
