@@ -34,7 +34,7 @@
 {
     enemies = [[NSMutableArray alloc] init];
     for(int i = 0 ;i < 3;i++){
-        Enemy *enemy = [Enemy createSprite];
+        Enemy *enemy = [[Enemy alloc] createSprite];
         [self addChild:enemy];
         [enemies addObject:enemy];
     }
@@ -108,11 +108,11 @@
 {
     // moveEnemy
     CGPoint moveOffSet = ccp(-1,0);
-    for (CCSprite *enemy in enemies){
+    for (Enemy *enemy in enemies){
         if ([self isCollidWithWall:enemy] == YES){
 //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
         }else{
-            enemy.position = ccpAdd(enemy.position, moveOffSet);
+            [enemy move];
             
         }
     }

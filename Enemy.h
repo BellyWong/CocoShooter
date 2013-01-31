@@ -13,7 +13,7 @@
 @interface Enemy : CCSprite
 
 @property(nonatomic,strong) CCSprite *e;
-+(id)createSprite;
+-(id)createSprite;
 
 
 @end

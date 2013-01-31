@@ -9,13 +9,16 @@
 #import "Enemy.h"
 
 @implementation Enemy
+{
+    CCSprite *e;
+}
 
-+(id)createSprite
+-(id)createSprite
 {
     
     int screenHeight = [[CCDirector sharedDirector] winSize].height;
     int screenWidth = [[CCDirector sharedDirector] winSize].width;
-     CCSprite * e = [[self class] spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
+      e = [[self class] spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
             int enemyOffset = e.contentSize.height;
         int randHeight = enemyOffset +  (arc4random() % (screenHeight - enemyOffset));
         
@@ -23,6 +26,12 @@
         e.rotation = 45;
     
     return e;
+}
+-(void)move
+{
+    CGPoint point = ccp(-1,0);
+    self.position = ccpAdd(self.position, point);
+    NSLog(@"called move");
 }
 
 -(id)init
