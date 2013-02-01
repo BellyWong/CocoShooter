@@ -66,8 +66,6 @@
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:[touch view]];
     location = [[CCDirector sharedDirector] convertToGL:location];
-    NSLog(@"location is %@",NSStringFromCGPoint(location));
-    NSLog(@"ended");
     
     
     float realWidth =location.x ;
@@ -85,6 +83,7 @@
     float a = atan2f(diffY, diffX) -  1.5;
     
     Ball *ball = [[Ball alloc] init];
+    ball.delegate = self;
     ball.angle = a;
     [ball setup];
     [self addChild:ball.sprite];
@@ -109,6 +108,13 @@
     
 }
 
+-(void)removeBallFromArrayWith:(id)object
+{
+    if ([object isKindOfClass:[Ball class]] && [object respondsToSelector:@selector(removeObject:)]){
+        
+        [balls removeObject:object];
+    }
+}
 
 
 -(void)update:(ccTime *)time
@@ -123,14 +129,11 @@
                 [enemy move];
             }
             for (Ball *ball in balls){
-                if (ball.sprite.visible == false){
-                    [balls removeObject:ball];
-                    [self removeChild:ball cleanup:YES];
-                }
-                
-                
                 if ([ball respondsToSelector:@selector(move)]){
                     [ball move];
+                }
+                if (ball.sprite.position.y< 0){
+                    ball.sprite.visible = false;
                 }
                 float distance = ccpDistance(ball.sprite.position, enemy.sprite.position);
                 if (distance < ball.sprite.contentSize.width + enemy.sprite.contentSize.width - 50 && ball.sprite.visible == true && enemy.sprite.visible == true

@@ -9,12 +9,14 @@
 #import "CCSprite.h"
 #import "cocos2d.h"
 
-@interface Ball : CCSprite
+@interface Ball : NSObject
 
 
 @property(nonatomic,strong) CCSprite *sprite;
 @property(nonatomic,assign) float angle;
+@property (nonatomic,strong) id delegate;
 -(CCSprite *)createSprite;
 -(void)move;
 -(void)setup;
+-(void)removeBallFromArrayWith:(id)object;
 @end

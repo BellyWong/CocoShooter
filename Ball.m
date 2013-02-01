@@ -51,6 +51,8 @@
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"changed ball.sprite");
+    NSLog(@"removed");
+    [self.delegate removeBallFromArrayWith:(id)object];
+    [self removeObserver:self forKeyPath:@"sprite.visible"];
 }
 @end
