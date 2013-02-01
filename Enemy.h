@@ -10,9 +10,8 @@
 #import "cocos2d.h"
 #import "Constants.h"
 
-@interface Enemy : CCSprite
+@interface Enemy : NSObject
 
-@property(nonatomic,strong) CCSprite *e;
 @property(nonatomic,strong) CCSprite *sprite;
 -(id)createSprite;
 

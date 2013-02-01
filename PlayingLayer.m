@@ -120,11 +120,13 @@
 -(void)update:(ccTime *)time
 {
     for (Enemy *enemy in enemies){
-        if ([self isCollidWithWall:enemy] == YES){
-            [enemies removeObject:enemy];
+        if ([self isCollidWithWall:enemy.sprite] == YES){
+            enemy.sprite.visible = false;
+        }
+//            enemy.sprite.visible = false;
+//            [enemies removeObject:enemy];
         // for debug
 //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
-        }else{
             if ([enemy respondsToSelector:@selector(move)]){
                 [enemy move];
             }
@@ -143,7 +145,6 @@
                 }else{
                 }
 //                NSLog(@"%@",NSStringFromCGPointccpDistance(ball.position, enemy.position));
-            }
             
         }
     }

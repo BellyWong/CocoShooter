@@ -10,7 +10,6 @@
 
 @implementation Enemy
 {
-    CCSprite *e;
     CGPoint vec;
 }
 
@@ -19,8 +18,8 @@
 {
     int screenHeight = [[CCDirector sharedDirector] winSize].height;
     int screenWidth = [[CCDirector sharedDirector] winSize].width;
-    self.sprite = [[self class] spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
-    int enemyOffset = e.contentSize.height;
+    self.sprite = [CCSprite spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
+    int enemyOffset = self.sprite.contentSize.height;
     int randHeight = enemyOffset +  (arc4random() % (screenHeight - enemyOffset));
     self.sprite.position = ccp(screenWidth + arc4random() % 150,randHeight);
     self.sprite.rotation = 45;
