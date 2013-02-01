@@ -18,5 +18,5 @@
 -(CCSprite *)createSprite;
 -(void)move;
 -(void)setup;
--(void)removeBallFromArrayWith:(id)object;
+-(void)removeObjectFromArray:(id)object;
 @end

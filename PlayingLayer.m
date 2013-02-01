@@ -35,6 +35,7 @@
     enemies = [[NSMutableArray alloc] init];
     for(int i = 0 ;i < 3;i++){
         Enemy *enemy = [[Enemy alloc] init];
+        enemy.delegate = self;
         [enemy setup];
         NSLog(@"enemy.sprite is %@",enemy.sprite);
         [self addChild:enemy.sprite];
@@ -108,12 +109,22 @@
     
 }
 
--(void)removeBallFromArrayWith:(id)object
+-(void)removeObjectFromArray:(id)object
 {
-    if ([object isKindOfClass:[Ball class]] && [object respondsToSelector:@selector(removeObject:)]){
-        
-        [balls removeObject:object];
+    int idx = 0;
+    for (int i = 0;i < [enemies count];i++){
+        Enemy *e = [enemies objectAtIndex:i];
+        if (e.sprite.visible == true){
+            idx++;
+        }
     }
+    if (idx == 0){
+        [self createEnemies];
+    }
+    
+
+
+
 }
 
 
@@ -122,11 +133,12 @@
     for (Enemy *enemy in enemies){
         if ([self isCollidWithWall:enemy.sprite] == YES){
             enemy.sprite.visible = false;
+//            [enemies removeLastObject];
         }
-//            enemy.sprite.visible = false;
-//            [enemies removeObject:enemy];
+        
         // for debug
 //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
+        
             if ([enemy respondsToSelector:@selector(move)]){
                 [enemy move];
             }
@@ -135,17 +147,18 @@
                     [ball move];
                 }
                 if (ball.sprite.position.y< 0){
-                    ball.sprite.visible = false;
+                    if (ball.sprite.visible != false){
+                        ball.sprite.visible = false;
+                    }
                 }
                 float distance = ccpDistance(ball.sprite.position, enemy.sprite.position);
                 if (distance < ball.sprite.contentSize.width + enemy.sprite.contentSize.width - 50 && ball.sprite.visible == true && enemy.sprite.visible == true
                     ){
+                    // ボールは貫通しない
                     ball.sprite.visible = false;
                     enemy.sprite.visible = false;
-                }else{
                 }
-//                NSLog(@"%@",NSStringFromCGPointccpDistance(ball.position, enemy.position));
-            
+        
         }
     }
     

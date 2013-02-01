@@ -23,6 +23,7 @@
     int randHeight = enemyOffset +  (arc4random() % (screenHeight - enemyOffset));
     self.sprite.position = ccp(screenWidth + arc4random() % 150,randHeight);
     self.sprite.rotation = 45;
+    [self addObserver:self forKeyPath:@"sprite.visible" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(void)move
@@ -32,6 +33,11 @@
 
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+        [self.delegate removeObjectFromArray:(id)object];
+        [self removeObserver:self forKeyPath:@"sprite.visible"];
+}
 -(id)init
 {
     

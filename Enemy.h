@@ -13,7 +13,11 @@
 @interface Enemy : NSObject
 
 @property(nonatomic,strong) CCSprite *sprite;
+@property(nonatomic,strong) id delegate;
+
 -(id)createSprite;
+
+-(void)removeObjectFromArray:(id)object;
 
 -(void)setup;
 -(void)move;
