@@ -17,5 +17,6 @@
 -(id)createSprite;
 
 -(void)setup;
+-(void)move;
 
 @end

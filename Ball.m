@@ -25,6 +25,7 @@
     friction = 0.9;
     self.sprite = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 50, 50)];
     self.sprite.position = ccp(30,30);
+    [self addObserver:self forKeyPath:@"sprite.visible" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(id)init
@@ -48,4 +49,8 @@
     
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"changed ball.sprite");
+}
 @end

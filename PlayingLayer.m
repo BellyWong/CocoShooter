@@ -77,8 +77,6 @@
     float length = sqrtf((realWidth * realWidth ) + (realHeight * realHeight));
     
     
-    
-    
     float diffY = realWidth/length;
     float diffX = realHeight/length;
     
@@ -117,16 +115,36 @@
 {
     for (Enemy *enemy in enemies){
         if ([self isCollidWithWall:enemy] == YES){
+            [enemies removeObject:enemy];
+        // for debug
 //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
         }else{
-            [enemy move];
+            if ([enemy respondsToSelector:@selector(move)]){
+                [enemy move];
+            }
+            for (Ball *ball in balls){
+                if (ball.sprite.visible == false){
+                    [balls removeObject:ball];
+                    [self removeChild:ball cleanup:YES];
+                }
+                
+                
+                if ([ball respondsToSelector:@selector(move)]){
+                    [ball move];
+                }
+                float distance = ccpDistance(ball.sprite.position, enemy.sprite.position);
+                if (distance < ball.sprite.contentSize.width + enemy.sprite.contentSize.width - 50 && ball.sprite.visible == true && enemy.sprite.visible == true
+                    ){
+                    ball.sprite.visible = false;
+                    enemy.sprite.visible = false;
+                }else{
+                }
+//                NSLog(@"%@",NSStringFromCGPointccpDistance(ball.position, enemy.position));
+            }
             
         }
     }
     
-    for(Ball *ball in balls){
-        [ball move];
-    }
 }
 
 
