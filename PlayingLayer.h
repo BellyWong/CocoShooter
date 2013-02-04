@@ -12,6 +12,7 @@
 #import "Enemy.h"
 #import "Constants.h"
 #import "Ball.h"
+#import "SimpleAudioEngine.h"
 
 
 @interface PlayingLayer : CCLayer

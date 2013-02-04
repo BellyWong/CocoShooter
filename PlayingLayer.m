@@ -25,6 +25,12 @@
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
+    
+    
+    // preload sound
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"great.mp3"];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.mp3"];
 	
 	// return the scene
 	return scene;
@@ -82,6 +88,7 @@
     
     // a - 1.5 が角度になる
     float a = atan2f(diffY, diffX) -  1.5;
+    [[SimpleAudioEngine sharedEngine] playEffect:@"great.mp3"];
     
     Ball *ball = [[Ball alloc] init];
     ball.delegate = self;
@@ -152,11 +159,14 @@
                     }
                 }
                 float distance = ccpDistance(ball.sprite.position, enemy.sprite.position);
+                // check collision
                 if (distance < ball.sprite.contentSize.width + enemy.sprite.contentSize.width - 50 && ball.sprite.visible == true && enemy.sprite.visible == true
                     ){
                     // ボールは貫通しない
                     ball.sprite.visible = false;
                     enemy.sprite.visible = false;
+                    ball.sprite.opacity = 0.5;
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"hit.mp3"];
                 }
         
         }
