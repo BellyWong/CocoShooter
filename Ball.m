@@ -15,6 +15,7 @@
     CCSprite *ball;
     float force;
     float friction;
+    CCLabelTTF *scoreLabel;
     
 }
 -(void)setup
@@ -26,6 +27,12 @@
     self.sprite = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 50, 50)];
     self.sprite.position = ccp(30,30);
     [self addObserver:self forKeyPath:@"sprite.visible" options:NSKeyValueObservingOptionNew context:nil];
+
+    
+//    score.position = ccp(45, 310);
+//    
+//    [self addChild: score];
+
 }
 
 -(id)init
@@ -42,6 +49,9 @@
     gravity.y -= 0.1;
     force  = 10;
     vec =  ccp(force*cosf(self.angle) * friction ,-1*force *sinf(self.angle));
+    if (self.hasHitted == true){
+        self.sprite.opacity = 0.9;
+    }
     
     self.sprite.position = ccpAdd(self.sprite.position,ccpAdd(vec,gravity));
     

@@ -15,7 +15,7 @@
 @property(nonatomic,strong) CCSprite *sprite;
 @property(nonatomic,assign) float angle;
 @property (nonatomic,strong) id delegate;
-@property  Boolean *hasHitted;
+@property  int hasHitted;
 -(CCSprite *)createSprite;
 -(void)move;
 -(void)setup;

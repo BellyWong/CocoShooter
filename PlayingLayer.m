@@ -12,6 +12,8 @@
 {
     NSMutableArray *enemies;
     NSMutableArray *balls;
+    CCLabelTTF *scoreLabel;
+    int currentScore;
 }
 
 
@@ -64,6 +66,10 @@
     self.isTouchEnabled = YES;
     [self createEnemies];
     [self scheduleUpdate];
+    scoreLabel = [CCLabelTTF labelWithString:@"Score:0pt" fontName:@"verdana" fontSize:25];
+    scoreLabel.position = ccp([Constants screenWidth] - 80,[Constants screenHeight] - 40);
+    [self addChild:scoreLabel];
+
 
     NSLog(@"onEnter");
 }
@@ -140,7 +146,6 @@
     for (Enemy *enemy in enemies){
         if ([self isCollidWithWall:enemy.sprite] == YES){
             enemy.sprite.visible = false;
-//            [enemies removeLastObject];
         }
         
         // for debug
@@ -164,13 +169,21 @@
                     ){
                     // ボールは貫通しない
                     ball.sprite.visible = false;
+                    ball.hasHitted = true;
                     enemy.sprite.visible = false;
-                    ball.sprite.opacity = 0.5;
+                    currentScore += 1;
+                    [self updateScoreLabel:currentScore];
                     [[SimpleAudioEngine sharedEngine] playEffect:@"hit.mp3"];
                 }
         
         }
     }
+    
+}
+-(void)updateScoreLabel:(int)num
+{
+    NSString *labelStr = [NSString stringWithFormat:@"Score:%ipt",num];
+    [scoreLabel setString:labelStr];
     
 }
 
