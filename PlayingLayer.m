@@ -12,9 +12,10 @@
 {
     NSMutableArray *enemies;
     NSMutableArray *balls;
+    float currentSpeed ;
+    int comboLegnth;
     CCLabelTTF *scoreLabel;
     int currentScore;
-//    CCParticleSystem *emitter;
 
 }
 
@@ -46,6 +47,8 @@
     for(int i = 0 ;i < 3;i++){
         Enemy *enemy = [[Enemy alloc] init];
         enemy.delegate = self;
+        [enemy setVec:ccp(currentSpeed,0)];
+
         [enemy setup];
         NSLog(@"enemy.sprite is %@",enemy.sprite);
         [self addChild:enemy.sprite];
@@ -65,6 +68,7 @@
 {
     [super onEnter];
     balls = [[NSMutableArray alloc] init];
+    currentSpeed = -1;
     self.isTouchEnabled = YES;
     [self createEnemies];
     [self scheduleUpdate];
@@ -137,10 +141,6 @@
     if (idx == 0){
         [self createEnemies];
     }
-    
-
-
-
 }
 
 
@@ -151,10 +151,13 @@
             enemy.sprite.visible = false;
         }
         
-        // for debug
+        // for production
 //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
         
             if ([enemy respondsToSelector:@selector(move)]){
+                // set enemy's speed.
+                
+//                [enemy setVec:ccp(currentSpeed,0)];
                 [enemy move];
             }
             for (Ball *ball in balls){
@@ -179,18 +182,9 @@
                     [self updateScoreLabel:currentScore];
                     [[SimpleAudioEngine sharedEngine] playEffect:@"hit.mp3"];
                     
+                    [self speedUpOfEnemy];
                     CCParticleSystem *particleStar  = [[ParticleManager alloc] createStarAt:ball.sprite.position];
                     [self addChild:particleStar z:10];
-                    
-                    
-                    
-                    
-
-
-                    
-                    
-                    
-                    
                     
                 }
                 
@@ -200,6 +194,12 @@
     
 }
 
+
+-(void)speedUpOfEnemy
+{
+    currentSpeed -= 0.1;
+    NSLog(@"currentSpeed is %f",currentSpeed);
+}
 
 
 

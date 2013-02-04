@@ -16,6 +16,8 @@
 @property(nonatomic,strong) id delegate;
 
 -(id)createSprite;
+-(void)setVec:(CGPoint)point;
+-(CGPoint )vec;
 
 -(void)removeObjectFromArray:(id)object;
 

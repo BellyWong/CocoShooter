@@ -28,9 +28,18 @@
 
 -(void)move
 {
-    vec = ccp(-1,0);
+//    vec = ccp(-1,0);
     self.sprite.position = ccpAdd(self.sprite.position, vec);
 
+}
+-(void)setVec:(CGPoint)point
+{
+    vec = point;
+    
+}
+-(CGPoint) vec
+{
+    return  vec;
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
