@@ -100,7 +100,7 @@
     
     
     // a - 1.5 が角度になる
-    float a = atan2f(diffY, diffX) -  1.5;
+    float a = atan2f(diffY, diffX) -  3.14/2;
     [[SimpleAudioEngine sharedEngine] playEffect:@"great.mp3"];
     
     Ball *ball = [[Ball alloc] init];
