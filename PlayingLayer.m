@@ -14,6 +14,8 @@
     NSMutableArray *balls;
     CCLabelTTF *scoreLabel;
     int currentScore;
+//    CCParticleSystem *emitter;
+
 }
 
 
@@ -69,6 +71,7 @@
     scoreLabel = [CCLabelTTF labelWithString:@"Score:0pt" fontName:@"verdana" fontSize:25];
     scoreLabel.position = ccp([Constants screenWidth] - 80,[Constants screenHeight] - 40);
     [self addChild:scoreLabel];
+
 
 
     NSLog(@"onEnter");
@@ -172,20 +175,47 @@
                     ball.hasHitted = true;
                     enemy.sprite.visible = false;
                     currentScore += 1;
+                    
                     [self updateScoreLabel:currentScore];
                     [[SimpleAudioEngine sharedEngine] playEffect:@"hit.mp3"];
+                    
+                    CCParticleSystem *particleStar  = [[ParticleManager alloc] createStarAt:ball.sprite.position];
+                    [self addChild:particleStar z:10];
+                    
+                    
+                    
+                    
+
+
+                    
+                    
+                    
+                    
+                    
                 }
+                
         
         }
     }
     
 }
+
+
+
+
 -(void)updateScoreLabel:(int)num
 {
     NSString *labelStr = [NSString stringWithFormat:@"Score:%ipt",num];
+    
+    
     [scoreLabel setString:labelStr];
     
 }
+
+
+
+
+
 
 
 

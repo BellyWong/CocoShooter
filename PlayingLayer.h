@@ -13,6 +13,7 @@
 #import "Constants.h"
 #import "Ball.h"
 #import "SimpleAudioEngine.h"
+#import "ParticleManager.h"
 
 
 @interface PlayingLayer : CCLayer
