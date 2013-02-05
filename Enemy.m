@@ -33,8 +33,9 @@
     
     NSMutableArray *flyingFrames = [NSMutableArray array];
     for(int i = 1; i < 4;i++){
-        [flyingFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
-                                 [NSString stringWithFormat:@"bird_0%d.png",i]]];
+        NSString *imagePath = [NSString stringWithFormat:@"bird_0%d.png",i];
+        
+        [flyingFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:imagePath]];
     }
     CCAnimation *flyingAnimation = [CCAnimation animationWithSpriteFrames:flyingFrames delay:0.1f];
     
