@@ -21,7 +21,7 @@
     self.sprite = [CCSprite spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
     int enemyOffset = self.sprite.contentSize.height;
     int randHeight = enemyOffset +  (arc4random() % (screenHeight - enemyOffset));
-    self.sprite.position = ccp(screenWidth + arc4random() % 150,randHeight);
+    self.sprite.position = ccp(screenWidth + arc4random() % 150,(arc4random() % 300) + 100);
     self.sprite.rotation = 45;
     [self addObserver:self forKeyPath:@"sprite.visible" options:NSKeyValueObservingOptionNew context:nil];
 }

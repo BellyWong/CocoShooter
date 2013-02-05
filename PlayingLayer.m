@@ -64,7 +64,9 @@ static CCScene *scene;
 }
 -(Boolean )isCollidWithWall:(CCSprite *)enemy
 {
-    if (enemy.position.x < enemy.contentSize.width/2){
+    NSLog(@"%f",enemy.contentSize.width);
+    NSLog(@"enemy.visible is %i",enemy.visible);
+    if (enemy.position.x < enemy.contentSize.width/2 && enemy.visible == YES){
         return YES;
     }
     return NO;
@@ -161,7 +163,9 @@ static CCScene *scene;
     for (Enemy *enemy in enemies){
         // if enemy collid with wall , then go to game over layer.
         if ([self isCollidWithWall:enemy.sprite] == YES){
-            enemy.sprite.visible = false;
+            
+            NSLog(@"enemy.collid");
+            NSLog(@"pos is %@",NSStringFromCGPoint(enemy.sprite.position));
             
             
             [self shakeScreen];
