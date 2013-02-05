@@ -32,6 +32,7 @@ static id particleManager;
     self.emitter.speed = 100;
     self.emitter.speedVar = 0;
     self.emitter.emissionRate = 30;
+    self.emitter.autoRemoveOnFinish = YES;
     return self.emitter;
 }
 

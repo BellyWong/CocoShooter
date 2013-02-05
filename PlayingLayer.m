@@ -7,6 +7,7 @@
 //
 
 #import "PlayingLayer.h"
+#define kPlayingLayer 10
 
 @implementation PlayingLayer
 {
@@ -16,26 +17,31 @@
     int comboLegnth;
     CCLabelTTF *scoreLabel;
     int currentScore;
-
+    CCScene *scene;
+    PlayingLayer *layer;
 }
 
 
+
+static CCScene *scene;
 +(CCScene *)scene
 {
+    if (scene == nil){
+        scene = [CCScene node];
+        
+        // 'layer' is an autorelease object.
+        PlayingLayer *layer = [PlayingLayer node];
+        layer.tag = kPlayingLayer;
+        
+        // add layer as a child to scene
+        [scene addChild: layer];
+    }else{
+        return scene;
+    }
     
-	CCScene *scene = [CCScene node];
 	
-	// 'layer' is an autorelease object.
-	PlayingLayer *layer = [PlayingLayer node];
-	
-	// add layer as a child to scene
-	[scene addChild: layer];
     
     
-    // preload sound
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.mp3"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"great.mp3"];
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.mp3"];
 	
 	// return the scene
 	return scene;
@@ -67,6 +73,7 @@
 -(void)onEnter
 {
     [super onEnter];
+    NSLog(@"secne is %@",[[self class] scene]);
     balls = [[NSMutableArray alloc] init];
     currentSpeed = -1;
     self.isTouchEnabled = YES;
@@ -75,6 +82,11 @@
     scoreLabel = [CCLabelTTF labelWithString:@"Score:0pt" fontName:@"verdana" fontSize:25];
     scoreLabel.position = ccp([Constants screenWidth] - 80,[Constants screenHeight] - 40);
     [self addChild:scoreLabel];
+
+    // preload sound
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"great.mp3"];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.mp3"];
 
 
 
@@ -147,12 +159,22 @@
 -(void)update:(ccTime *)time
 {
     for (Enemy *enemy in enemies){
+        // if enemy collid with wall , then go to game over layer.
         if ([self isCollidWithWall:enemy.sprite] == YES){
             enemy.sprite.visible = false;
+            
+            
+            [self shakeScreen];
+            
+            // for production
+    //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
+            
+            
+            
+            
+            
         }
         
-        // for production
-//            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
         
             if ([enemy respondsToSelector:@selector(move)]){
                 // set enemy's speed.
@@ -186,11 +208,25 @@
                     CCParticleSystem *particleStar  = [[ParticleManager alloc] createStarAt:ball.sprite.position];
                     [self addChild:particleStar z:10];
                     
+                    
+                    
+                    
                 }
                 
         
         }
     }
+    
+}
+-(void)shakeScreen
+{
+    
+    id action = [CCShaky3D actionWithRange:3 shakeZ:YES grid:ccg(10,30) duration:0.2];
+    id reset = [CCCallBlock actionWithBlock:^{
+        [[[self class] scene] getChildByTag:kPlayingLayer].grid = nil;
+        
+    }];
+    [self runAction:[CCSequence actions:action,reset, nil]];
     
 }
 
