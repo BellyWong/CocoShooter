@@ -41,6 +41,9 @@
     
     CCAnimate *animate = [CCAnimate actionWithAnimation:flyingAnimation];
     CCRepeatForever *repeat = [CCRepeatForever actionWithAction:animate];
+    self.sprite.scale = 0.1;
+    
+    
     [self.sprite runAction:repeat];
     
     
@@ -51,6 +54,11 @@
 {
     NSLog(@"received");
 }
+-(void)resizeSprite:(CCSprite*)sprite toWidth:(float)width toHeight:(float)height {
+    sprite.scaleX = width / sprite.contentSize.width;
+    sprite.scaleY = height / sprite.contentSize.height;
+}
+
 
 -(void)move
 {

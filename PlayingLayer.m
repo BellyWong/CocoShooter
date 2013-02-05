@@ -63,7 +63,8 @@ static CCScene *scene;
 }
 -(Boolean )isCollidWithWall:(CCSprite *)enemy
 {
-    if (enemy.position.x < enemy.contentSize.width/2 && enemy.visible == YES){
+    
+    if (enemy.position.x < enemy.boundingBox.size.width/2 && enemy.visible == YES){
         return YES;
     }
     return NO;
@@ -123,24 +124,6 @@ static CCScene *scene;
     [ball setup];
     [self addChild:ball.sprite];
     [balls addObject:ball];
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-
-    
-    
-
-    
-    
-    
 }
 
 -(void)removeObjectFromArray:(id)object
@@ -163,10 +146,6 @@ static CCScene *scene;
     for (Enemy *enemy in enemies){
         // if enemy collid with wall , then go to game over layer.
         if ([self isCollidWithWall:enemy.sprite] == YES){
-            
-            NSLog(@"enemy.collid");
-            NSLog(@"pos is %@",NSStringFromCGPoint(enemy.sprite.position));
-            
             
             [self shakeScreen];
             
@@ -196,8 +175,9 @@ static CCScene *scene;
                     }
                 }
                 float distance = ccpDistance(ball.sprite.position, enemy.sprite.position);
+                NSLog(@"distance is %f",distance);
                 // check collision
-                if (distance < ball.sprite.contentSize.width + enemy.sprite.contentSize.width - 50 && ball.sprite.visible == true && enemy.sprite.visible == true
+                if (distance < ball.sprite.contentSize.width + enemy.sprite.contentSize.width && ball.sprite.visible == true && enemy.sprite.visible == true
                     ){
                     // ボールは貫通しない
                     ball.sprite.visible = false;
@@ -212,7 +192,9 @@ static CCScene *scene;
                     
                     [self speedUpOfEnemy];
                     CCParticleSystem *particleStar  = [[ParticleManager alloc] createStarAt:ball.sprite.position];
+                    
                     [self addChild:particleStar z:10];
+//                    [self unscheduleAllSelectors];
                     
                     
                 }
