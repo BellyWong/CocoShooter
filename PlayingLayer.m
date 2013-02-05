@@ -224,7 +224,7 @@ static CCScene *scene;
 -(void)shakeScreen
 {
     
-    id action = [CCShaky3D actionWithRange:5 shakeZ:YES grid:ccg(10,30) duration:1];
+    id action = [CCShaky3D actionWithRange:3 shakeZ:YES grid:ccg(10,30) duration:1];
     id reset = [CCCallBlock actionWithBlock:^{
         [[[self class] scene] getChildByTag:kPlayingLayer].grid = nil;
         
@@ -241,7 +241,7 @@ static CCScene *scene;
 -(void)speedUpOfEnemy
 {
     if (currentSpeed <= -5){
-        currentSpeed = -0.01;
+        currentSpeed = -5;
     }else{
         currentSpeed -= 0.1;
         

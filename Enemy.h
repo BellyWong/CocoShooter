@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "Constants.h"
 
-@interface Enemy : NSObject
+@interface Enemy : CCNode
 
 @property(nonatomic,strong) CCSprite *sprite;
 @property(nonatomic,strong) id delegate;
