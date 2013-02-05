@@ -197,8 +197,10 @@ static CCScene *scene;
                     ){
                     // ボールは貫通しない
                     ball.sprite.visible = false;
+                    [self removeChild:ball.sprite cleanup:YES];
                     ball.hasHitted = true;
                     enemy.sprite.visible = false;
+                    [self removeChild:enemy.sprite cleanup:YES];
                     currentScore += 1;
                     
                     [self updateScoreLabel:currentScore];
@@ -221,7 +223,7 @@ static CCScene *scene;
 -(void)shakeScreen
 {
     
-    id action = [CCShaky3D actionWithRange:3 shakeZ:YES grid:ccg(10,30) duration:0.2];
+    id action = [CCShaky3D actionWithRange:1 shakeZ:YES grid:ccg(10,30) duration:0.5];
     id reset = [CCCallBlock actionWithBlock:^{
         [[[self class] scene] getChildByTag:kPlayingLayer].grid = nil;
         
@@ -233,8 +235,12 @@ static CCScene *scene;
 
 -(void)speedUpOfEnemy
 {
-    currentSpeed -= 0.1;
-    NSLog(@"currentSpeed is %f",currentSpeed);
+    if (currentSpeed <= -5){
+        currentSpeed = -0.01;
+    }else{
+        currentSpeed -= 0.1;
+        
+    }
 }
 
 
