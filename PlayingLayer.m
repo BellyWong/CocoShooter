@@ -56,7 +56,6 @@ static CCScene *scene;
         [enemy setVec:ccp(currentSpeed,0)];
 
         [enemy setup];
-        NSLog(@"enemy.sprite is %@",enemy.sprite);
         [self addChild:enemy.sprite];
         [enemies addObject:(Enemy *)enemy];
     }
@@ -64,8 +63,6 @@ static CCScene *scene;
 }
 -(Boolean )isCollidWithWall:(CCSprite *)enemy
 {
-    NSLog(@"%f",enemy.contentSize.width);
-    NSLog(@"enemy.visible is %i",enemy.visible);
     if (enemy.position.x < enemy.contentSize.width/2 && enemy.visible == YES){
         return YES;
     }
@@ -85,10 +82,13 @@ static CCScene *scene;
     scoreLabel.position = ccp([Constants screenWidth] - 80,[Constants screenHeight] - 40);
     [self addChild:scoreLabel];
 
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.mp3"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"great.mp3"];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.mp3"];
+    });
     // preload sound
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.mp3"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"great.mp3"];
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.mp3"];
 
 
 
@@ -183,7 +183,7 @@ static CCScene *scene;
             if ([enemy respondsToSelector:@selector(move)]){
                 // set enemy's speed.
                 
-//                [enemy setVec:ccp(currentSpeed,0)];
+                [enemy setVec:ccp(currentSpeed,0)];
                 [enemy move];
             }
             for (Ball *ball in balls){
@@ -215,10 +215,7 @@ static CCScene *scene;
                     [self addChild:particleStar z:10];
                     
                     
-                    
-                    
                 }
-                
         
         }
     }
@@ -227,12 +224,16 @@ static CCScene *scene;
 -(void)shakeScreen
 {
     
-    id action = [CCShaky3D actionWithRange:1 shakeZ:YES grid:ccg(10,30) duration:0.5];
+    id action = [CCShaky3D actionWithRange:5 shakeZ:YES grid:ccg(10,30) duration:1];
     id reset = [CCCallBlock actionWithBlock:^{
         [[[self class] scene] getChildByTag:kPlayingLayer].grid = nil;
         
     }];
-    [self runAction:[CCSequence actions:action,reset, nil]];
+    id onEnd = [CCCallBlock actionWithBlock:^(void) {
+        [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
+        
+    }];
+    [self runAction:[CCSequence actions:action,reset,onEnd, nil]];
     
 }
 
