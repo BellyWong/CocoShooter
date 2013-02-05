@@ -148,6 +148,7 @@ static CCScene *scene;
         if ([self isCollidWithWall:enemy.sprite] == YES){
             
             [self shakeScreen];
+            [self unscheduleUpdate];
             
             // for production
     //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
@@ -166,6 +167,7 @@ static CCScene *scene;
                 [enemy move];
             }
             for (Ball *ball in balls){
+                
                 if ([ball respondsToSelector:@selector(move)]){
                     [ball move];
                 }
@@ -174,10 +176,9 @@ static CCScene *scene;
                         ball.sprite.visible = false;
                     }
                 }
-                float distance = ccpDistance(ball.sprite.position, enemy.sprite.position);
-                NSLog(@"distance is %f",distance);
+                float distance = ccpDistance(ball.sprite.boundingBox.origin, enemy.sprite.boundingBox.origin);
                 // check collision
-                if (distance < ball.sprite.contentSize.width + enemy.sprite.contentSize.width && ball.sprite.visible == true && enemy.sprite.visible == true
+                if (distance < ball.sprite.boundingBox.size.width + enemy.sprite.boundingBox.size.height && ball.sprite.visible == true && enemy.sprite.visible == true
                     ){
                     // ボールは貫通しない
                     ball.sprite.visible = false;
@@ -194,7 +195,6 @@ static CCScene *scene;
                     CCParticleSystem *particleStar  = [[ParticleManager alloc] createStarAt:ball.sprite.position];
                     
                     [self addChild:particleStar z:10];
-//                    [self unscheduleAllSelectors];
                     
                     
                 }
