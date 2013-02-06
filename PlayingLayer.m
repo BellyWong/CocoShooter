@@ -52,7 +52,7 @@ static CCScene *scene;
 -(void)createEnemies
 {
     enemies = [[NSMutableArray alloc] init];
-    for(int i = 0 ;i < 5;i++){
+    for(int i = 0 ;i < 3;i++){
         Enemy *enemy = [[Enemy alloc] init];
         enemy.visible = true;
         enemy.position = ccp(100,100);
@@ -177,14 +177,15 @@ static CCScene *scene;
                     ball.hasHitted = true;
                     
                     
+                    
+                    currentSpeed -= 0.1;
                     enemy.sprite.visible = false;
-                    [enemy reset];
+                    [enemy reset:currentSpeed];
                     currentScore += 1;
                     
                     [self updateScoreLabel:currentScore];
                     [[SimpleAudioEngine sharedEngine] playEffect:@"hit.mp3"];
                     
-                    [self speedUpOfEnemy];
                     CCParticleSystem *particleStar  = [[ParticleManager alloc] createStarAt:ball.sprite.position];
                     
                     [self addChild:particleStar z:10];
@@ -199,32 +200,21 @@ static CCScene *scene;
 -(void)shakeScreen
 {
     
-    id action = [CCShaky3D actionWithRange:3 shakeZ:YES grid:ccg(10,30) duration:1];
+    
+    [self unscheduleUpdate];
+    id action = [CCShaky3D actionWithRange:3 shakeZ:YES grid:ccg(10,30) duration:0.5];
     id reset = [CCCallBlock actionWithBlock:^{
         [[[self class] scene] getChildByTag:kPlayingLayer].grid = nil;
         
     }];
     id onEnd = [CCCallBlock actionWithBlock:^(void) {
-        [self unscheduleUpdate];
         [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
-
-        
     }];
     [self runAction:[CCSequence actions:action,reset,onEnd, nil]];
     
 }
 
 
--(void)speedUpOfEnemy
-{
-    int maxSpeed = -5;
-    if (currentSpeed <= maxSpeed){
-        currentSpeed = -maxSpeed;
-    }else{
-        currentSpeed -= 0.1;
-        
-    }
-}
 
 
 

@@ -21,6 +21,7 @@
     self.sprite = [[CCSprite alloc] init];
     self.sprite.position = ccp(screenWidth + arc4random() % 150,(arc4random() % 300) + 100);
     self.sprite.rotation = 45;
+    self.currentSpeed = -1;
 
     
     CCSpriteFrameCache *frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
@@ -60,15 +61,16 @@
 
 -(void)move
 {
-    vec = ccp(-1,0);
+    vec = ccp(self.currentSpeed,0) ;
     self.sprite.position = ccpAdd(self.sprite.position, vec);
-//    NSLog(@"pos is %@",NSStringFromCGPoint(self.sprite.position));
 
 }
 
 
--(void)reset
+// リセットした時にスピードを上げる
+-(void)reset:(float)speed
 {
+    self.currentSpeed = speed;
     self.sprite.visible = true;
     self.sprite.position = ccp(320 + arc4random() % 200,100 + arc4random() % 200);
 
