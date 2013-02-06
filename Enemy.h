@@ -20,6 +20,7 @@
 -(CGPoint )vec;
 
 -(void)removeObjectFromArray:(id)object;
+-(void)reset;
 
 -(void)setup;
 -(void)move;

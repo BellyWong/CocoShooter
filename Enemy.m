@@ -60,8 +60,9 @@
 
 -(void)move
 {
-//    vec = ccp(-1,0);
+    vec = ccp(-1,0);
     self.sprite.position = ccpAdd(self.sprite.position, vec);
+//    NSLog(@"pos is %@",NSStringFromCGPoint(self.sprite.position));
 
 }
 

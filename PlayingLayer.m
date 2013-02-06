@@ -52,7 +52,7 @@ static CCScene *scene;
 -(void)createEnemies
 {
     enemies = [[NSMutableArray alloc] init];
-    for(int i = 0 ;i < 1;i++){
+    for(int i = 0 ;i < 5;i++){
         Enemy *enemy = [[Enemy alloc] init];
         enemy.visible = true;
         enemy.position = ccp(100,100);
@@ -158,9 +158,7 @@ static CCScene *scene;
         
             for (Ball *ball in balls){
                 
-                if ([ball respondsToSelector:@selector(move)]){
-                    [ball move];
-                }
+                [ball move];
                 if (ball.sprite.position.y< 0){
                     if (ball.sprite.visible != false){
                         ball.sprite.visible = false;
