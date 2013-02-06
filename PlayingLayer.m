@@ -47,16 +47,18 @@ static CCScene *scene;
 	return scene;
     
 }
+
+
 -(void)createEnemies
 {
     enemies = [[NSMutableArray alloc] init];
-    for(int i = 0 ;i < 3;i++){
+    for(int i = 0 ;i < 1;i++){
         Enemy *enemy = [[Enemy alloc] init];
-        enemy.delegate = self;
+        enemy.visible = true;
+        enemy.position = ccp(100,100);
         [enemy setVec:ccp(currentSpeed,0)];
-
         [enemy setup];
-        [self addChild:enemy.sprite];
+       [self addChild:enemy.sprite];
         [enemies addObject:(Enemy *)enemy];
     }
     
@@ -129,24 +131,13 @@ static CCScene *scene;
     [balls addObject:ball];
 }
 
--(void)removeObjectFromArray:(id)object
-{
-    int idx = 0;
-    for (int i = 0;i < [enemies count];i++){
-        Enemy *e = [enemies objectAtIndex:i];
-        if (e.sprite.visible == true){
-            idx += 1;
-        }
-    }
-    if (idx == 0){
-        NSLog(@"calllde dcreate");
-        [self createEnemies];
-    }
-}
 
 
 -(void)update:(ccTime *)time
 {
+    
+    
+    
     for (Enemy *enemy in enemies){
         // if enemy collid with wall , then go to game over layer.
         if ([self isCollidWithWall:enemy.sprite] == YES){
@@ -157,19 +148,14 @@ static CCScene *scene;
             // for production
     //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
             
-            
-            
-            
-            
         }
         
+    
+            [enemy setVec:ccp(currentSpeed,0)];
+            [enemy move];
         
-            if ([enemy respondsToSelector:@selector(move)]){
-                // set enemy's speed.
-                
-                [enemy setVec:ccp(currentSpeed,0)];
-                [enemy move];
-            }
+        
+        
             for (Ball *ball in balls){
                 
                 if ([ball respondsToSelector:@selector(move)]){
@@ -181,19 +167,20 @@ static CCScene *scene;
                     }
                 }
                 float distance = ccpDistance(ball.sprite.position, enemy.sprite.position);
+                
+                
+                
                 // check collision
                 if (distance < ball.sprite.contentSize.width + enemy.sprite.contentSize.width && ball.sprite.visible == true && enemy.sprite.visible == true
                     ){
                     // ボールは貫通しない
                     ball.sprite.visible = false;
                     [ball.sprite setAnchorPoint:CGPointMake(0.5, 0.5)];
-                    [self removeChild:ball.sprite cleanup:YES];
                     ball.hasHitted = true;
                     
                     
                     enemy.sprite.visible = false;
-                    
-                    [self removeChild:enemy.sprite cleanup:YES];
+                    [enemy reset];
                     currentScore += 1;
                     
                     [self updateScoreLabel:currentScore];

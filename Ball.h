@@ -20,4 +20,6 @@
 -(void)move;
 -(void)setup;
 -(void)removeObjectFromArray:(id)object;
+-(void)reset;
+
 @end

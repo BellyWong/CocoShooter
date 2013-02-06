@@ -16,15 +16,12 @@
 
 -(void)setup
 {
-    int screenHeight = [[CCDirector sharedDirector] winSize].height;
     int screenWidth = [[CCDirector sharedDirector] winSize].width;
     self.sprite = [CCSprite spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
     self.sprite = [[CCSprite alloc] init];
-    int enemyOffset = self.sprite.contentSize.height;
     self.sprite.position = ccp(screenWidth + arc4random() % 150,(arc4random() % 300) + 100);
     self.sprite.rotation = 45;
 
-    [self addObserver:self forKeyPath:@"sprite.visible" options:NSKeyValueObservingOptionNew context:nil];
     
     CCSpriteFrameCache *frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
     [frameCache addSpriteFramesWithFile:@"birds_animation.plist"];
@@ -67,6 +64,15 @@
     self.sprite.position = ccpAdd(self.sprite.position, vec);
 
 }
+
+
+-(void)reset
+{
+    self.sprite.visible = true;
+    self.sprite.position = ccp(320 + arc4random() % 200,100 + arc4random() % 200);
+
+}
+
 -(void)setVec:(CGPoint)point
 {
     vec = point;
@@ -77,11 +83,6 @@
     return  vec;
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-        [self.delegate removeObjectFromArray:(id)object];
-        [self removeObserver:self forKeyPath:@"sprite.visible"];
-}
 -(id)init
 {
     

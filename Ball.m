@@ -25,8 +25,6 @@
     vec = ccp(0,1);
     friction = 0.9;
     self.sprite = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 30, 30)];
-    [self addObserver:self forKeyPath:@"sprite.visible" options:NSKeyValueObservingOptionNew context:nil];
-
     
 }
 
@@ -54,9 +52,4 @@
     
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    [self.delegate removeObjectFromArray:(id)object];
-    [self removeObserver:self forKeyPath:@"sprite.visible"];
-}
 @end
