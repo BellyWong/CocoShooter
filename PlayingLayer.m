@@ -64,7 +64,10 @@ static CCScene *scene;
 -(Boolean )isCollidWithWall:(CCSprite *)enemy
 {
     
-    if (enemy.position.x < enemy.boundingBox.size.width/2 && enemy.visible == YES){
+    // -10 は微調整
+    if (enemy.position.x < enemy.contentSize.width/2 -10    && enemy.visible == YES){
+        NSLog(@"enmey.postion is %f",enemy.position.x);
+        NSLog(@"enemy.contentSize.width is %f",enemy.contentSize.width);
         return YES;
     }
     return NO;
@@ -132,10 +135,11 @@ static CCScene *scene;
     for (int i = 0;i < [enemies count];i++){
         Enemy *e = [enemies objectAtIndex:i];
         if (e.sprite.visible == true){
-            idx++;
+            idx += 1;
         }
     }
     if (idx == 0){
+        NSLog(@"calllde dcreate");
         [self createEnemies];
     }
 }
@@ -148,7 +152,7 @@ static CCScene *scene;
         if ([self isCollidWithWall:enemy.sprite] == YES){
             
             [self shakeScreen];
-            [self unscheduleUpdate];
+            return;
             
             // for production
     //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
@@ -176,15 +180,19 @@ static CCScene *scene;
                         ball.sprite.visible = false;
                     }
                 }
-                float distance = ccpDistance(ball.sprite.boundingBox.origin, enemy.sprite.boundingBox.origin);
+                float distance = ccpDistance(ball.sprite.position, enemy.sprite.position);
                 // check collision
-                if (distance < ball.sprite.boundingBox.size.width + enemy.sprite.boundingBox.size.height && ball.sprite.visible == true && enemy.sprite.visible == true
+                if (distance < ball.sprite.contentSize.width + enemy.sprite.contentSize.width && ball.sprite.visible == true && enemy.sprite.visible == true
                     ){
                     // ボールは貫通しない
                     ball.sprite.visible = false;
+                    [ball.sprite setAnchorPoint:CGPointMake(0.5, 0.5)];
                     [self removeChild:ball.sprite cleanup:YES];
                     ball.hasHitted = true;
+                    
+                    
                     enemy.sprite.visible = false;
+                    
                     [self removeChild:enemy.sprite cleanup:YES];
                     currentScore += 1;
                     
@@ -212,7 +220,9 @@ static CCScene *scene;
         
     }];
     id onEnd = [CCCallBlock actionWithBlock:^(void) {
+        [self unscheduleUpdate];
         [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
+
         
     }];
     [self runAction:[CCSequence actions:action,reset,onEnd, nil]];
@@ -222,8 +232,9 @@ static CCScene *scene;
 
 -(void)speedUpOfEnemy
 {
-    if (currentSpeed <= -5){
-        currentSpeed = -5;
+    int maxSpeed = -5;
+    if (currentSpeed <= maxSpeed){
+        currentSpeed = -maxSpeed;
     }else{
         currentSpeed -= 0.1;
         

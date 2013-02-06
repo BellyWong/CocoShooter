@@ -18,11 +18,12 @@
 {
     int screenHeight = [[CCDirector sharedDirector] winSize].height;
     int screenWidth = [[CCDirector sharedDirector] winSize].width;
-//    self.sprite = [CCSprite spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
+    self.sprite = [CCSprite spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
     self.sprite = [[CCSprite alloc] init];
     int enemyOffset = self.sprite.contentSize.height;
     self.sprite.position = ccp(screenWidth + arc4random() % 150,(arc4random() % 300) + 100);
     self.sprite.rotation = 45;
+
     [self addObserver:self forKeyPath:@"sprite.visible" options:NSKeyValueObservingOptionNew context:nil];
     
     CCSpriteFrameCache *frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
@@ -41,7 +42,7 @@
     
     CCAnimate *animate = [CCAnimate actionWithAnimation:flyingAnimation];
     CCRepeatForever *repeat = [CCRepeatForever actionWithAction:animate];
-    self.sprite.scale = 0.1;
+//    self.sprite.scale =0.3;
     
     
     [self.sprite runAction:repeat];
