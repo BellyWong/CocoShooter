@@ -68,8 +68,6 @@ static CCScene *scene;
     
     // -10 は微調整
     if (enemy.position.x < enemy.contentSize.width/2 -10    && enemy.visible == YES){
-        NSLog(@"enmey.postion is %f",enemy.position.x);
-        NSLog(@"enemy.contentSize.width is %f",enemy.contentSize.width);
         return YES;
     }
     return NO;
@@ -146,7 +144,8 @@ static CCScene *scene;
             return;
             
             // for production
-    //            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
+            [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene
+                                                       ]];
             
         }
         

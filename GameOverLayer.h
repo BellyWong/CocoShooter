@@ -7,6 +7,9 @@
 //
 
 #import "CCScene.h"
+#import "cocos2d.h"
+#import "IntroLayer.h"
+#import "HelloWorldLayer.h"
 
 @interface GameOverLayer : CCScene
 +(CCScene *)scene;
