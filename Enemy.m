@@ -11,11 +11,14 @@
 @implementation Enemy
 {
     CGPoint vec;
+    int offY;
+    int flag;
 }
 
 
 -(void)setup
 {
+    flag =1;
     int screenWidth = [[CCDirector sharedDirector] winSize].width;
     self.sprite = [CCSprite spriteWithFile:@"enemy.png" rect:CGRectMake(0, 0, 50, 50)];
     self.sprite = [[CCSprite alloc] init];
@@ -61,7 +64,14 @@
 
 -(void)move
 {
-    vec = ccp(self.currentSpeed,0) ;
+    
+    offY += 1;
+    if (offY >  10 ){
+        flag *= -1;
+        offY = 1;
+    }
+    float force = offY * flag/10;
+    vec = ccp(self.currentSpeed ,force) ;
     self.sprite.position = ccpAdd(self.sprite.position, vec);
 
 }
@@ -72,7 +82,7 @@
 {
     self.currentSpeed = speed;
     self.sprite.visible = true;
-    self.sprite.position = ccp(320 + arc4random() % 200,100 + arc4random() % 200);
+    self.sprite.position = ccp(320 + arc4random() % 200,100 + arc4random() % 300);
 
 }
 

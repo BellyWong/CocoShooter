@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Enemy.m"
-         timestampString = "382265957.003137"
+         timestampString = "382272761.272227"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "141"
-         endingLineNumber = "141">
+         startingLineNumber = "152"
+         endingLineNumber = "152">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

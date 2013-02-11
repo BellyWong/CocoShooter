@@ -14,6 +14,7 @@
 #import "Ball.h"
 #import "SimpleAudioEngine.h"
 #import "ParticleManager.h"
+#import "HelloWorldLayer.h"
 
 
 @interface PlayingLayer : CCLayer

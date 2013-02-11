@@ -43,25 +43,60 @@
 	if( (self=[super init]) ) {
 		
 		// create and initialize a Label
-        
-        CCMenuItemFont *menuItem1 = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
-            NSLog(@"tapped");
-            [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[PlayingLayer scene] withColor:ccWHITE]];
-            
-
-            
-        }];
-        
-        
-        CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1, nil];
-        [titleMenu alignItemsVertically];
-        [self addChild:titleMenu];
 
 	
 
 	}
 	return self;
 }
+
+-(void)addMenu
+{
+    
+    
+    
+    CCMenuItemFont *menuItem1 = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
+        
+        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"scene_ended" object:nil];
+        
+        [[CCDirector sharedDirector] replaceScene:[PlayingLayer scene
+                                                ]];
+        
+        
+    }];
+
+    CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1, nil];
+    [titleMenu alignItemsVertically];
+    [self addChild:titleMenu];
+    
+}
+-(void)onExit
+{
+    [super onExit];
+    
+    
+}
+-(void)onEnter
+{
+    [super onEnter];
+    [self removeAllChildrenWithCleanup:YES];
+    NSLog(@"callelelelell");
+    
+    [self addMenu];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                         selector:@selector(mySceneEnd:) name:@"scene_ended" object:nil];
+    
+}
+- (void) mySceneEnd:(NSNotification *)notif {
+    if ([CCDirector sharedDirector].runningScene){
+        [[CCDirector sharedDirector] end];
+    }
+    NSLog(@"called end");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
@@ -74,17 +109,4 @@
 	[super dealloc];
 }
 
-#pragma mark GameKit delegate
-
--(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
-{
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
-}
-
--(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
-{
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
-}
 @end

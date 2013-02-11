@@ -26,25 +26,11 @@
 static CCScene *scene;
 +(CCScene *)scene
 {
-    if (scene == nil){
-        scene = [CCScene node];
-        
-        // 'layer' is an autorelease object.
-        PlayingLayer *layer = [PlayingLayer node];
-        layer.tag = kPlayingLayer;
-        
-        // add layer as a child to scene
-        [scene addChild: layer];
-    }else{
-        return scene;
-    }
-    
-	
-    
-    
-	
-	// return the scene
-	return scene;
+    scene = [CCScene node];
+    PlayingLayer *layer = [PlayingLayer node];
+    layer.tag = kPlayingLayer;
+    [scene addChild: layer];
+    return scene;
     
 }
 
@@ -76,7 +62,6 @@ static CCScene *scene;
 -(void)onEnter
 {
     [super onEnter];
-    NSLog(@"secne is %@",[[self class] scene]);
     balls = [[NSMutableArray alloc] init];
     currentSpeed = -1;
     self.isTouchEnabled = YES;
@@ -208,6 +193,7 @@ static CCScene *scene;
     id onEnd = [CCCallBlock actionWithBlock:^(void) {
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
         [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
+        [[CCDirector sharedDirector] removeFromParentViewController];
     }];
     
     [self runAction:[CCSequence actions:action,reset,onEnd, nil]];
