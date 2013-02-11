@@ -96,7 +96,6 @@ static CCScene *scene;
 
 
 
-    NSLog(@"onEnter");
 }
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -207,8 +206,10 @@ static CCScene *scene;
         
     }];
     id onEnd = [CCCallBlock actionWithBlock:^(void) {
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
         [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
     }];
+    
     [self runAction:[CCSequence actions:action,reset,onEnd, nil]];
     
 }
