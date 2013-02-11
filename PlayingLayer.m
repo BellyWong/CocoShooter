@@ -194,7 +194,19 @@ static CCScene *scene;
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
         [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
         [[CCDirector sharedDirector] removeFromParentViewController];
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        if ([ud objectForKey:@"bestScore"] ==nil){
+            [ud setObject:[NSString stringWithFormat:@"%i",currentScore] forKey:@"bestScore"];
+        }
+        
+        if (currentScore > [[ud objectForKey:@"bestScore"] intValue]){
+            [ud setObject:[NSString stringWithFormat:@"%i",currentScore] forKey:@"bestScore"];
+            NSLog(@"update best");
+        }
+        [ud setObject:[NSString stringWithFormat:@"%i",currentScore]  forKey:@"currentScore"];
     }];
+    
+    
     
     [self runAction:[CCSequence actions:action,reset,onEnd, nil]];
     

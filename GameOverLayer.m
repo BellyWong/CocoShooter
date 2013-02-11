@@ -9,6 +9,9 @@
 #import "GameOverLayer.h"
 
 @implementation GameOverLayer
+{
+    NSUserDefaults *ud;
+}
 
 +(CCScene *)scene
 {
@@ -28,6 +31,7 @@
 -(void)onEnter
 {
     [super onEnter];
+    ud = [NSUserDefaults standardUserDefaults];
     [self addMenu];
 
 }
@@ -41,12 +45,19 @@
 {
     
     CCLabelTTF *titleLabel  = [CCLabelTTF labelWithString:@"Back to Menu" fontName:@"Arial" fontSize:33];
+    CCLabelTTF *currentScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Score: %@pt",[ud objectForKey:@"currentScore"]] fontName:@"Arial" fontSize:33];
+    CCLabelTTF *bestScoreLabel = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"Best: %@pt",[ud objectForKey:@"bestScore"]] fontName:@"Arial" fontSize:33];
     
     
+    CCMenuItemLabel *bestScoreItem = [CCMenuItemLabel itemWithLabel:bestScoreLabel];
+    CCMenuItemLabel *currentScoreItem = [CCMenuItemLabel itemWithLabel:currentScoreLabel];
     CCMenuItemLabel *backItem = [CCMenuItemLabel itemWithLabel:titleLabel target:self selector:@selector(onBack)];
     
     
-    CCMenu *menu = [CCMenu menuWithItems:backItem, nil];
+    
+    
+    CCMenu *menu = [CCMenu menuWithItems:backItem,currentScoreItem,bestScoreItem, nil];
+    [menu alignItemsVertically];
     [self addChild:menu];
     
 }
