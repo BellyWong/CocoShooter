@@ -34,6 +34,14 @@
 	// return the scene
 	return scene;
 }
+-(void)addBackground
+{
+    CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
+    bg.anchorPoint = ccp(0,0);
+    [self addChild:bg z:-1];
+    
+}
+
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -59,7 +67,6 @@
     CCMenuItemFont *menuItem1 = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
         
         
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"scene_ended" object:nil];
         
         [[CCDirector sharedDirector] replaceScene:[PlayingLayer scene
                                                 ]];
@@ -69,7 +76,6 @@
     menuItem1.color = ccc3(200,0,0);
     NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
     CCMenuItemFont *menuItem2 = [CCMenuItemFont itemWithString:item2Str];
-//    CCLabelTTF *bestScoreLabel = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"Best: %@pt",[ud objectForKey:@"bestScore"]] fontName:@"Arial" fontSize:33];
 
 
     CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1,menuItem2, nil];
@@ -88,6 +94,7 @@
     [super onEnter];
     [self removeAllChildrenWithCleanup:YES];
     
+    [self addBackground];
     [self addMenu];
     
     [[NSNotificationCenter defaultCenter] addObserver:self

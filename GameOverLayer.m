@@ -33,6 +33,15 @@
     [super onEnter];
     ud = [NSUserDefaults standardUserDefaults];
     [self addMenu];
+    [self addBackground];
+
+
+}
+-(void)addBackground
+{
+        CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
+        bg.anchorPoint = ccp(0,0);
+        [self addChild:bg z:-1];
 
 }
 -(void)onBack

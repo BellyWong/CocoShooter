@@ -69,6 +69,7 @@ static CCScene *scene;
 -(void)onEnter
 {
     [super onEnter];
+    
     [self addBackground];
     balls = [[NSMutableArray alloc] init];
     currentSpeed = -1;
