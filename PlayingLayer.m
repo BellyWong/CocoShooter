@@ -59,9 +59,17 @@ static CCScene *scene;
     return NO;
     
 }
+-(void)addBackground
+{
+    CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
+    bg.anchorPoint = ccp(0,0);
+    [self addChild:bg z:-1];
+    
+}
 -(void)onEnter
 {
     [super onEnter];
+    [self addBackground];
     balls = [[NSMutableArray alloc] init];
     currentSpeed = -1;
     self.isTouchEnabled = YES;
@@ -69,6 +77,15 @@ static CCScene *scene;
     [self scheduleUpdate];
     scoreLabel = [CCLabelTTF labelWithString:@"Score:0pt" fontName:@"verdana" fontSize:25];
     scoreLabel.position = ccp([Constants screenWidth] - 80,[Constants screenHeight] - 40);
+    scoreLabel.color = ccc3(255, 10, 0);
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
+    
+    CCLabelTTF *bestLabel = [CCLabelTTF labelWithString:item2Str fontName:@"Arial" fontSize:22];
+    bestLabel.position = ccp([Constants screenWidth] -80,[Constants screenHeight] - 80);
+    bestLabel.color = ccc3(255,0,0);
+    [self addChild:bestLabel z:-1];
     [self addChild:scoreLabel];
     [self addBackMenu];
 
@@ -242,8 +259,6 @@ static CCScene *scene;
 -(void)updateScoreLabel:(int)num
 {
     NSString *labelStr = [NSString stringWithFormat:@"Score:%ipt",num];
-    
-    
     [scoreLabel setString:labelStr];
     
 }

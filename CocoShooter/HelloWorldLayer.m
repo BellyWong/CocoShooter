@@ -66,6 +66,7 @@
         
         
     }];
+    menuItem1.color = ccc3(200,0,0);
     NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
     CCMenuItemFont *menuItem2 = [CCMenuItemFont itemWithString:item2Str];
 //    CCLabelTTF *bestScoreLabel = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"Best: %@pt",[ud objectForKey:@"bestScore"]] fontName:@"Arial" fontSize:33];
@@ -86,7 +87,6 @@
 {
     [super onEnter];
     [self removeAllChildrenWithCleanup:YES];
-    NSLog(@"callelelelell");
     
     [self addMenu];
     

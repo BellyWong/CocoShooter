@@ -24,8 +24,7 @@
     gravity = ccp(0,-1);
     vec = ccp(0,1);
     friction = 0.9;
-    self.sprite = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 30, 30)];
-    
+    self.sprite = [CCSprite spriteWithFile:@"ball.png"];
 }
 
 -(id)init
