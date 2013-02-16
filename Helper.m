@@ -31,7 +31,7 @@
     
     [bannerView_ loadRequest:request];
     
-    [viewController.view addSubview:bannerView_];
+//    [viewController.view addSubview:bannerView_];
     request.testDevices = [NSArray arrayWithObjects:@"37c90c97d6fd748bee05d26144386bc17ad79c46",nil];
     
     
