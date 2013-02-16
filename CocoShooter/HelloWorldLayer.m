@@ -54,6 +54,7 @@
 {
     
     
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
     CCMenuItemFont *menuItem1 = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
         
@@ -65,8 +66,12 @@
         
         
     }];
+    NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
+    CCMenuItemFont *menuItem2 = [CCMenuItemFont itemWithString:item2Str];
+//    CCLabelTTF *bestScoreLabel = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"Best: %@pt",[ud objectForKey:@"bestScore"]] fontName:@"Arial" fontSize:33];
 
-    CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1, nil];
+
+    CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1,menuItem2, nil];
     [titleMenu alignItemsVertically];
     [self addChild:titleMenu];
     

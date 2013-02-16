@@ -28,15 +28,14 @@
 
     
     CCSpriteFrameCache *frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
-    [frameCache addSpriteFramesWithFile:@"birds_animation.plist"];
-//    [frameCache addSpriteFramesWithFile:@"birds_animation.plist"];
+    [frameCache addSpriteFramesWithFile:@"birds.plist"];
     
     
 
     
     NSMutableArray *flyingFrames = [NSMutableArray array];
     for(int i = 1; i < 4;i++){
-        NSString *imagePath = [NSString stringWithFormat:@"bird_0%d.png",i];
+        NSString *imagePath = [NSString stringWithFormat:@"bird%d.png",i];
         
         [flyingFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:imagePath]];
     }

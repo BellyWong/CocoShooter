@@ -70,6 +70,7 @@ static CCScene *scene;
     scoreLabel = [CCLabelTTF labelWithString:@"Score:0pt" fontName:@"verdana" fontSize:25];
     scoreLabel.position = ccp([Constants screenWidth] - 80,[Constants screenHeight] - 40);
     [self addChild:scoreLabel];
+    [self addBackMenu];
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -81,6 +82,28 @@ static CCScene *scene;
 
 
 
+}
+-(void)addBackMenu
+{
+//    CCMenuItem
+    
+    CCLabelTTF *titleLabel  = [CCLabelTTF labelWithString:@"Back" fontName:@"Arial" fontSize:23];
+    
+    
+    CCMenuItemLabel *backItem = [CCMenuItemLabel itemWithLabel:titleLabel target:self selector:@selector(onBack:)];
+    
+    CCMenu *menu = [CCMenu menuWithItems:backItem, nil];
+    menu.position = ccp(50,[Constants screenHeight] - 40);
+
+    [self addChild:menu];
+    
+}
+
+-(void)onBack:(id)sender
+{
+    [[CCDirector sharedDirector] replaceScene:[HelloWorldLayer scene]];
+
+    
 }
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
