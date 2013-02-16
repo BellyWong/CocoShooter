@@ -95,13 +95,26 @@
     [self removeAllChildrenWithCleanup:YES];
     
     [self addBackground];
+    
+    [self addTitle];
     [self addMenu];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                          selector:@selector(mySceneEnd:) name:@"scene_ended" object:nil];
     
 }
-- (void) mySceneEnd:(NSNotification *)notif {
+-(void)addTitle
+{
+    NSLog(@"called title");
+    CCLabelTTF *titleLabel = [CCLabelTTF labelWithString:@"Shooting Bird" fontName:@"Arial" fontSize:50];
+    
+//    CCLabelTTF *titleLabel  = [CCLabelTTF labelWithString:@"Back to Menu" fontName:@"Arial" fontSize:33];
+    titleLabel.position = ccp([Constants screenWidth]/2,[Constants screenHeight] * 0.8);
+    titleLabel.color = ccc3(51,0,0);
+    [self addChild:titleLabel z:10];
+
+}
+- (void) mySceneEnd:(NSNotification *)sender {
     if ([CCDirector sharedDirector].runningScene){
         [[CCDirector sharedDirector] end];
     }

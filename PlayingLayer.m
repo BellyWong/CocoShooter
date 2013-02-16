@@ -85,7 +85,6 @@ static CCScene *scene;
     
     CCLabelTTF *bestLabel = [CCLabelTTF labelWithString:item2Str fontName:@"Arial" fontSize:22];
     bestLabel.position = ccp([Constants screenWidth] -80,[Constants screenHeight] - 80);
-    bestLabel.color = ccc3(255,0,0);
     [self addChild:bestLabel z:-1];
     [self addChild:scoreLabel];
     [self addBackMenu];
