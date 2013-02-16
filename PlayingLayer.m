@@ -70,6 +70,8 @@ static CCScene *scene;
 {
     [super onEnter];
     
+    [[Helper alloc] removeAdmobOn:[CCDirector sharedDirector].parentViewController];
+    
     [self addBackground];
     balls = [[NSMutableArray alloc] init];
     currentSpeed = -1;
@@ -77,25 +79,21 @@ static CCScene *scene;
     [self createEnemies];
     [self scheduleUpdate];
     scoreLabel = [CCLabelTTF labelWithString:@"Score:0pt" fontName:@"verdana" fontSize:25];
-    scoreLabel.position = ccp([Constants screenWidth] - 80,[Constants screenHeight] - 40);
+    scoreLabel.position = ccp([Constants screenWidth] - 80,[Constants screenHeight] - 80);
     scoreLabel.color = ccc3(255, 10, 0);
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
     
     CCLabelTTF *bestLabel = [CCLabelTTF labelWithString:item2Str fontName:@"Arial" fontSize:22];
-    bestLabel.position = ccp([Constants screenWidth] -80,[Constants screenHeight] - 80);
+    bestLabel.position = ccp([Constants screenWidth] -80,[Constants screenHeight]  - 120);
     [self addChild:bestLabel z:-1];
     [self addChild:scoreLabel];
     [self addBackMenu];
 
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.mp3"];
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"great.mp3"];
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.mp3"];
-    });
-    // preload sound
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"great.mp3"];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.mp3"];
 
 
 
@@ -241,7 +239,6 @@ static CCScene *scene;
         
         if (currentScore > [[ud objectForKey:@"bestScore"] intValue]){
             [ud setObject:[NSString stringWithFormat:@"%i",currentScore] forKey:@"bestScore"];
-            NSLog(@"update best");
         }
         [ud setObject:[NSString stringWithFormat:@"%i",currentScore]  forKey:@"currentScore"];
     }];

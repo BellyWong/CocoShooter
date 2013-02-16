@@ -7,7 +7,11 @@
 //
 
 #import "CCNode.h"
+#import "GADBannerView.h"
 
 @interface Helper : CCNode
+
+-(void)addAdmobOn:(UIViewController *)viewController;
+-(void)removeAdmobOn:(UIViewController *)viewController;
 
 @end

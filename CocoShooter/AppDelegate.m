@@ -35,7 +35,7 @@
 	director_.wantsFullScreenLayout = YES;
 
 	// Display FSP and SPF
-	[director_ setDisplayStats:YES];
+	[director_ setDisplayStats:NO];
 
 	// set FPS at 60
 	[director_ setAnimationInterval:1.0/30];
@@ -93,7 +93,10 @@
 // Supported orientations: Landscape. Customize it for your own needs
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+//    return ( UIInterfaceOrientationIsPortrait( interfaceOrientation ) );
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+
+
 }
 
 
