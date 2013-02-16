@@ -139,6 +139,8 @@
 		066BFA6116B8D24E0004B7CB /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 066BFA6016B8D24E0004B7CB /* enemy.png */; };
 		066BFA6816B8DF320004B7CB /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA6716B8DF320004B7CB /* GameOverLayer.m */; };
 		066BFA7216B8E4020004B7CB /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA7116B8E4020004B7CB /* Enemy.m */; };
+		068CFE9C16CF8F1F008285B3 /* birds.plist in Resources */ = {isa = PBXBuildFile; fileRef = 068CFE9B16CF8F1F008285B3 /* birds.plist */; };
+		068CFE9E16CF8F2C008285B3 /* birds.png in Resources */ = {isa = PBXBuildFile; fileRef = 068CFE9D16CF8F2C008285B3 /* birds.png */; };
 		06DC3F8F16BA6CC600037B70 /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DC3F8E16BA6CC600037B70 /* Ball.m */; };
 		06DC3F9216BA6F1200037B70 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 06DC3F9116BA6F1200037B70 /* ball.png */; };
 		06DFF7E316BF572B00580156 /* great.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 06DFF7E216BF572B00580156 /* great.mp3 */; };
@@ -429,6 +431,8 @@
 		066BFA6716B8DF320004B7CB /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
 		066BFA7016B8E4020004B7CB /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = ../Enemy.h; sourceTree = "<group>"; };
 		066BFA7116B8E4020004B7CB /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enemy.m; path = ../Enemy.m; sourceTree = "<group>"; };
+		068CFE9B16CF8F1F008285B3 /* birds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = birds.plist; sourceTree = "<group>"; };
+		068CFE9D16CF8F2C008285B3 /* birds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birds.png; sourceTree = "<group>"; };
 		06DC3F8D16BA6CC600037B70 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
 		06DC3F8E16BA6CC600037B70 /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ball.m; sourceTree = "<group>"; };
 		06DC3F9116BA6F1200037B70 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
@@ -528,6 +532,7 @@
 		066BF8D416B8C60A0004B7CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				068CFE9916CF8EE4008285B3 /* birds */,
 				06DFF87016BFBF5300580156 /* bird_images */,
 				06DFF86A16BF738C00580156 /* stars-grayscale.png */,
 				066BF8D516B8C60A0004B7CB /* Default.png */,
@@ -535,6 +540,7 @@
 				066BF8D716B8C60A0004B7CB /* Default-Landscape~ipad.png */,
 				066BFA6016B8D24E0004B7CB /* enemy.png */,
 				06E9821C16C255D000875AF7 /* birds_animation.plist */,
+				068CFE9B16CF8F1F008285B3 /* birds.plist */,
 				066BF8D916B8C60A0004B7CB /* fps_images.png */,
 				06DC3F9116BA6F1200037B70 /* ball.png */,
 				06E9821E16C255DC00875AF7 /* birds_animation.png */,
@@ -917,6 +923,14 @@
 			name = models;
 			sourceTree = "<group>";
 		};
+		068CFE9916CF8EE4008285B3 /* birds */ = {
+			isa = PBXGroup;
+			children = (
+				068CFE9D16CF8F2C008285B3 /* birds.png */,
+			);
+			name = birds;
+			sourceTree = "<group>";
+		};
 		06DFF87016BFBF5300580156 /* bird_images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1009,6 +1023,8 @@
 				06EA163816C100E30018F0BD /* bird_03.png in Resources */,
 				06E9821D16C255D000875AF7 /* birds_animation.plist in Resources */,
 				06E9821F16C255DC00875AF7 /* birds_animation.png in Resources */,
+				068CFE9C16CF8F1F008285B3 /* birds.plist in Resources */,
+				068CFE9E16CF8F2C008285B3 /* birds.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

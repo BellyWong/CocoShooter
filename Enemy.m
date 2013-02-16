@@ -29,6 +29,7 @@
     
     CCSpriteFrameCache *frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
     [frameCache addSpriteFramesWithFile:@"birds_animation.plist"];
+//    [frameCache addSpriteFramesWithFile:@"birds_animation.plist"];
     
     
 
@@ -78,7 +79,7 @@
 
 
 // リセットした時にスピードを上げる
--(void)reset:(float)speed
+- (void)reset:(float)speed
 {
     self.currentSpeed = speed;
     self.sprite.visible = true;
