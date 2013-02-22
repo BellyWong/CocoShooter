@@ -12,7 +12,7 @@
 #import <GameKit/GameKit.h>
 
 
-@interface GameKitHelper : NSObject<GKGameCenterControllerDelegate>
+@interface GameKitHelper : NSObject<GKGameCenterControllerDelegate,GKLeaderboardViewControllerDelegate>
 
 @property (nonatomic,strong) id delegate;
 
@@ -23,6 +23,7 @@
 
 -(void)onScoreSubmitted:(bool)success;
 
+-(void)showLeaderboard;
 
 // playingLayerprotocol
 

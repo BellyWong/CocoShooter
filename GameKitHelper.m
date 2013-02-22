@@ -86,5 +86,25 @@
 }
 
 
+// Leaderboards
+-(void) showLeaderboard
+{
+    
+    GKLeaderboardViewController* leaderboardVC = [[GKLeaderboardViewController alloc] init] ;
+    if (leaderboardVC != nil)
+    {
+        leaderboardVC.leaderboardDelegate = self;
+        [self presentViewController:leaderboardVC];
+        
+
+    }
+}
+
+-(void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 
 @end

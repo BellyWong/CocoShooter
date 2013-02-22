@@ -70,19 +70,20 @@
     
     CCMenuItemFont *menuItem1 = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
         
-        
-        
         [[CCDirector sharedDirector] replaceScene:[PlayingLayer scene
                                                 ]];
         
-        
+    }];
+    
+    CCMenuItemFont *menuItem3 = [CCMenuItemFont itemWithString:@"Ranking" block:^(id sender) {
+        [[GameKitHelper shared] showLeaderboard];
     }];
     menuItem1.color = ccc3(200,0,0);
     NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
     CCMenuItemFont *menuItem2 = [CCMenuItemFont itemWithString:item2Str];
 
 
-    CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1,menuItem2, nil];
+    CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1,menuItem2,menuItem3, nil];
     [titleMenu alignItemsVertically];
     [self addChild:titleMenu];
     
@@ -112,20 +113,6 @@
     
     [[GameKitHelper shared] authenticateLocalPlayer];
     
-    // game center's id
-    //        com.nobinobiru.shooting
-//    GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"com.nobinobiru.shooting"];
-//    scoreReporter.value = 0;
-//
-//    [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
-//        if (error != nil){
-//            NSLog(@"sumitted failed!");
-//        }else{
-//            NSLog(@"success!");
-//        }
-//    }];
-//    NSLog(@"fllfflflflflfllflflfl");
-//    [self showReader];
     
     
     
