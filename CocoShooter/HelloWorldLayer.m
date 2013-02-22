@@ -112,6 +112,21 @@
     
     [[GameKitHelper shared] authenticateLocalPlayer];
     
+    // game center's id
+    //        com.nobinobiru.shooting
+//    GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"com.nobinobiru.shooting"];
+//    scoreReporter.value = 0;
+//
+//    [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
+//        if (error != nil){
+//            NSLog(@"sumitted failed!");
+//        }else{
+//            NSLog(@"success!");
+//        }
+//    }];
+//    NSLog(@"fllfflflflflfllflflfl");
+//    [self showReader];
+    
     
     
     

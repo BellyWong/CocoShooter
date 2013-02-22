@@ -22,6 +22,11 @@
 @interface PlayingLayer : CCLayer
 
 +(CCScene *) scene;
-@property (nonatomic,assign) id <GameKitHelperProtocol> delegate;
+@property (nonatomic,assign) id  delegate;
+-(void)onScoreSubmitted:(bool)success;
+
+
+
+
 
 @end

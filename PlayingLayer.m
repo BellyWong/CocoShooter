@@ -69,7 +69,8 @@ static CCScene *scene;
 -(void)onEnter
 {
     [super onEnter];
-    self.delegate = [GameKitHelper shared];
+    GameKitHelper *gh = [GameKitHelper shared];
+    gh.delegate = self;
     
     [[Helper alloc] removeAdmobOn:[CCDirector sharedDirector].parentViewController];
     
@@ -246,6 +247,7 @@ static CCScene *scene;
             [ud setObject:[NSString stringWithFormat:@"%i",currentScore] forKey:@"bestScore"];
         }
         [ud setObject:[NSString stringWithFormat:@"%i",currentScore]  forKey:@"currentScore"];
+        [[GameKitHelper shared] submitScore:currentScore category:@"com.nobinobiru.shooting"];
     }];
     
     
@@ -262,14 +264,18 @@ static CCScene *scene;
 {
     NSString *labelStr = [NSString stringWithFormat:@"Score:%ipt",num];
     [scoreLabel setString:labelStr];
+//    [GameKitHelper shared] presentVi
     
 }
 
+
 -(void)onScoreSubmitted:(bool)success
 {
+    
     NSLog(@"subbmmitte");
     
 }
+
 
 
 

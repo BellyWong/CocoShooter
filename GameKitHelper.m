@@ -17,11 +17,9 @@
 +(id)shared
 {
     static GameKitHelper *gh;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        gh = [[GameKitHelper alloc ] init];
-        
-    });
+    if (!gh){
+        gh = [[GameKitHelper alloc] init];
+    }
     return gh;
     
 }
@@ -78,13 +76,11 @@
     GKScore *gkScore = [[GKScore alloc] initWithCategory:category];
     gkScore.value = value;
 
+    NSLog(@"delegate is %@",self.delegate);
     [gkScore reportScoreWithCompletionHandler:^(NSError *error) {
         [self setLastError:error];
         BOOL success = (error == nil);
-        if ([_delegate respondsToSelector:@selector(onScoreSubmitted:)]){
-            [_delegate onScoreSubmitted:success];
-            
-        }
+       [self.delegate onScoreSubmitted:success];
         
     }];
 }

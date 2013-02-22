@@ -11,17 +11,19 @@
 
 #import <GameKit/GameKit.h>
 
-@protocol GameKitHelperProtocol <NSObject>
--(void)onScoreSubmitted:(bool)success;
-@end
 
 @interface GameKitHelper : NSObject<GKGameCenterControllerDelegate>
 
-@property (nonatomic,strong) id<GameKitHelperProtocol>delegate;
+@property (nonatomic,strong) id delegate;
 
 @property (nonatomic,strong) NSError *lastError;
 +(id)shared;
 -(void)authenticateLocalPlayer;
 -(void)submitScore:(int)value category:(NSString *)category;
+
+-(void)onScoreSubmitted:(bool)success;
+
+
+// playingLayerprotocol
 
 @end
