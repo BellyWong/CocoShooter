@@ -75,15 +75,16 @@
         
     }];
     
-    CCMenuItemFont *menuItem3 = [CCMenuItemFont itemWithString:@"Ranking" block:^(id sender) {
+    CCMenuItemFont *menuItem3 = [CCMenuItemFont itemWithString:@"View Score" block:^(id sender) {
         [[GameKitHelper shared] showLeaderboard];
     }];
     menuItem1.color = ccc3(200,0,0);
-    NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
-    CCMenuItemFont *menuItem2 = [CCMenuItemFont itemWithString:item2Str];
+//    NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
+//    CCMenuItemFont *menuItem2 = [CCMenuItemFont itemWithString:item2Str];
 
 
-    CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1,menuItem2,menuItem3, nil];
+//    CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1,menuItem2,menuItem3, nil];
+    CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1,menuItem3, nil];
     [titleMenu alignItemsVertically];
     [self addChild:titleMenu];
     

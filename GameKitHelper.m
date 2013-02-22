@@ -76,7 +76,6 @@
     GKScore *gkScore = [[GKScore alloc] initWithCategory:category];
     gkScore.value = value;
 
-    NSLog(@"delegate is %@",self.delegate);
     [gkScore reportScoreWithCompletionHandler:^(NSError *error) {
         [self setLastError:error];
         BOOL success = (error == nil);
@@ -100,6 +99,11 @@
     }
 }
 
+-(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+{
+    [gameCenterViewController dismissViewControllerAnimated:YES completion:nil];
+    
+}
 -(void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
     [viewController dismissViewControllerAnimated:YES completion:nil];

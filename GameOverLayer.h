@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "IntroLayer.h"
 #import "HelloWorldLayer.h"
+#import "GameKitHelper.h"
 
 @interface GameOverLayer : CCScene
 +(CCScene *)scene;
