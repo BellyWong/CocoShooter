@@ -110,7 +110,7 @@ static CCScene *scene;
     CCMenuItemLabel *backItem = [CCMenuItemLabel itemWithLabel:titleLabel target:self selector:@selector(onBack:)];
     
     CCMenu *menu = [CCMenu menuWithItems:backItem, nil];
-    menu.position = ccp(50,[Constants screenHeight] - 40);
+    menu.position = ccp(50,[Constants screenHeight] - 40 - 50);
 
     [self addChild:menu];
     

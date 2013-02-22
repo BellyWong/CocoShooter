@@ -98,6 +98,7 @@
 {
     [super onEnter];
     [self removeAllChildrenWithCleanup:YES];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
     
     [self addBackground];
     
