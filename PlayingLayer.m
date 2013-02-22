@@ -232,10 +232,6 @@ static CCScene *scene;
     }];
     id onEnd = [CCCallBlock actionWithBlock:^(void) {
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-        
-        
-        
-        
         [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
         [[CCDirector sharedDirector] removeFromParentViewController];
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -247,6 +243,7 @@ static CCScene *scene;
             [ud setObject:[NSString stringWithFormat:@"%i",currentScore] forKey:@"bestScore"];
         }
         [ud setObject:[NSString stringWithFormat:@"%i",currentScore]  forKey:@"currentScore"];
+        
         [[GameKitHelper shared] submitScore:currentScore category:@"com.nobinobiru.shooting"];
         
     }];

@@ -75,7 +75,10 @@
         
     }];
     
-    CCMenuItemFont *menuItem3 = [CCMenuItemFont itemWithString:@"View Score" block:^(id sender) {
+    
+
+    
+    CCMenuItemFont *menuItem3 = [CCMenuItemFont itemWithString:@"Rank" block:^(id sender) {
         [[GameKitHelper shared] showLeaderboard];
     }];
     menuItem1.color = ccc3(200,0,0);

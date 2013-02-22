@@ -57,7 +57,7 @@
     titleLabel.color = ccc3(255,0,0);
     CCLabelTTF *currentScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Score: %@pt",[ud objectForKey:@"currentScore"]] fontName:@"Arial" fontSize:33];
 //    CCLabelTTF *bestScoreLabel = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"Best: %@pt",[ud objectForKey:@"bestScore"]] fontName:@"Arial" fontSize:33];
-    CCLabelTTF *viewScoreLabel = [CCLabelTTF labelWithString:@"View Score" fontName:@"Arial" fontSize:33];
+    CCLabelTTF *viewScoreLabel = [CCLabelTTF labelWithString:@"Rank" fontName:@"Arial" fontSize:33];
     
 //    CCMenuItemLabel *bestScoreItem = [CCMenuItemLabel itemWithLabel:bestScoreLabel];
     CCMenuItemLabel *currentScoreItem = [CCMenuItemLabel itemWithLabel:currentScoreLabel];

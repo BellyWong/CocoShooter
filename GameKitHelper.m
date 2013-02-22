@@ -28,6 +28,7 @@
 {
     
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
     localPlayer.authenticateHandler = ^(UIViewController *vc,NSError *err){
         [self setLastError:err];
@@ -36,6 +37,21 @@
         }
         if (localPlayer.authenticated){
             _gameCenterFeaturesEnabled = YES;
+            
+            // get localplayer's score.
+            NSArray *arr = @[localPlayer.playerID];
+            GKLeaderboard *board = [[GKLeaderboard alloc] initWithPlayerIDs:arr];
+            board.timeScope = GKLeaderboardTimeScopeAllTime;
+            board.range = NSMakeRange(1, 1);
+            board.category = @"com.nobinobiru.shooting";
+            [board loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
+                NSString *s = [NSString stringWithFormat:@"%lld",board.localPlayerScore.value];
+                [ud setObject:[NSString stringWithFormat:@"%@",s] forKey:@"bestScore"];
+                NSLog(@"scores is %@",scores);
+                
+                
+            }];
+            
         }else if (vc){
             [[CCDirector sharedDirector] pause];
             [self presentViewController:vc];
@@ -97,11 +113,20 @@
         
 
     }
+    
+    
+    
+    
+    
 }
 
 -(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
 {
     [gameCenterViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    
+    
     
 }
 -(void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
