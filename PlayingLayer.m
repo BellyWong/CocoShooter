@@ -248,6 +248,7 @@ static CCScene *scene;
         }
         [ud setObject:[NSString stringWithFormat:@"%i",currentScore]  forKey:@"currentScore"];
         [[GameKitHelper shared] submitScore:currentScore category:@"com.nobinobiru.shooting"];
+        
     }];
     
     
