@@ -69,6 +69,7 @@ static CCScene *scene;
 -(void)onEnter
 {
     [super onEnter];
+    self.delegate = [GameKitHelper shared];
     
     [[Helper alloc] removeAdmobOn:[CCDirector sharedDirector].parentViewController];
     
@@ -230,6 +231,10 @@ static CCScene *scene;
     }];
     id onEnd = [CCCallBlock actionWithBlock:^(void) {
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+        
+        
+        
+        
         [[CCDirector sharedDirector] replaceScene:[GameOverLayer scene]];
         [[CCDirector sharedDirector] removeFromParentViewController];
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -260,6 +265,11 @@ static CCScene *scene;
     
 }
 
+-(void)onScoreSubmitted:(bool)success
+{
+    NSLog(@"subbmmitte");
+    
+}
 
 
 

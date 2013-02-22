@@ -142,6 +142,7 @@
 		066BFA6116B8D24E0004B7CB /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 066BFA6016B8D24E0004B7CB /* enemy.png */; };
 		066BFA6816B8DF320004B7CB /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA6716B8DF320004B7CB /* GameOverLayer.m */; };
 		066BFA7216B8E4020004B7CB /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 066BFA7116B8E4020004B7CB /* Enemy.m */; };
+		067C7BB716D7818100AA38E7 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 067C7BB616D7818100AA38E7 /* GameKitHelper.m */; };
 		068CFEA016CF91F9008285B3 /* birds.png in Resources */ = {isa = PBXBuildFile; fileRef = 068CFE9F16CF91F9008285B3 /* birds.png */; };
 		068CFEA216CF9200008285B3 /* birds.plist in Resources */ = {isa = PBXBuildFile; fileRef = 068CFEA116CF9200008285B3 /* birds.plist */; };
 		068CFEA916CF97EE008285B3 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 068CFEA716CF97EE008285B3 /* ball.png */; };
@@ -439,6 +440,8 @@
 		066BFA6716B8DF320004B7CB /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
 		066BFA7016B8E4020004B7CB /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = ../Enemy.h; sourceTree = "<group>"; };
 		066BFA7116B8E4020004B7CB /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enemy.m; path = ../Enemy.m; sourceTree = "<group>"; };
+		067C7BB516D7818100AA38E7 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
+		067C7BB616D7818100AA38E7 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
 		068CFE9F16CF91F9008285B3 /* birds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birds.png; sourceTree = "<group>"; };
 		068CFEA116CF9200008285B3 /* birds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = birds.plist; sourceTree = "<group>"; };
 		068CFEA716CF97EE008285B3 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
@@ -500,6 +503,8 @@
 		066BF8B216B8C60A0004B7CB = {
 			isa = PBXGroup;
 			children = (
+				067C7BB516D7818100AA38E7 /* GameKitHelper.h */,
+				067C7BB616D7818100AA38E7 /* GameKitHelper.m */,
 				06087A4216CFEDA5002E6FD3 /* iPhoneRetina_Glossy_Icon_annoymous.png */,
 				06087A4016CFED97002E6FD3 /* iPhone_Glossy_Icon_annoymous.png */,
 				068CFF6316CFA2AD008285B3 /* AdSupport.framework */,
@@ -1193,6 +1198,7 @@
 				06DC3F8F16BA6CC600037B70 /* Ball.m in Sources */,
 				06DFF86F16BF755A00580156 /* ParticleManager.m in Sources */,
 				068CFEB116CF9988008285B3 /* Helper.m in Sources */,
+				067C7BB716D7818100AA38E7 /* GameKitHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

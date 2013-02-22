@@ -16,10 +16,12 @@
 #import "ParticleManager.h"
 #import "HelloWorldLayer.h"
 #import "Helper.h"
+#import "GameKitHelper.h"
 
 
 @interface PlayingLayer : CCLayer
 
 +(CCScene *) scene;
+@property (nonatomic,assign) id <GameKitHelperProtocol> delegate;
 
 @end

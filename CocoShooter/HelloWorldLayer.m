@@ -49,6 +49,7 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
+        
 		
 		// create and initialize a Label
 
@@ -107,7 +108,38 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                          selector:@selector(mySceneEnd:) name:@"scene_ended" object:nil];
     
+    
+    
+    [[GameKitHelper shared] authenticateLocalPlayer];
+    
+    
+    
+    
+    
 }
+-(void)showReader
+{
+    GKLeaderboardViewController *lvc = [[GKLeaderboardViewController alloc] init];
+    if (lvc != nil){
+        lvc.leaderboardDelegate = self;
+        [[CCDirector sharedDirector].parentViewController.view addSubview:lvc.view];
+    }
+    
+}
+
+-(void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+{
+    NSLog(@"called done");
+    
+    [[CCDirector sharedDirector].parentViewController dismissViewControllerAnimated:YES
+     completion:^{
+         NSLog(@"finish");
+     }];
+}
+
+
+
+
 -(void)addTitle
 {
     CCLabelTTF *titleLabel = [CCLabelTTF labelWithString:@"Shooting Bird" fontName:@"Arial" fontSize:50];

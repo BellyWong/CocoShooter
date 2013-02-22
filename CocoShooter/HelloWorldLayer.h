@@ -13,6 +13,7 @@
 #import "cocos2d.h"
 #import "Constants.h"
 #import "Helper.h"
+#import "GameKitHelper.h"
 
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
