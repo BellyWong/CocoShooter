@@ -76,7 +76,7 @@
     }
     float forceY = 3 * sinf(direction * offY);
     
-    vec = ccp(self.currentSpeed ,forceY) ;
+    vec = ccp(1.5 * self.currentSpeed ,forceY) ;
     self.sprite.position = ccpAdd(self.sprite.position, vec);
 
 }
