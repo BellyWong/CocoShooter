@@ -56,10 +56,11 @@
     CCLabelTTF *titleLabel  = [CCLabelTTF labelWithString:@"Back to Menu" fontName:@"Arial" fontSize:33];
     titleLabel.color = ccc3(255,0,0);
     CCLabelTTF *currentScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Score: %@pt",[ud objectForKey:@"currentScore"]] fontName:@"Arial" fontSize:33];
-//    CCLabelTTF *bestScoreLabel = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"Best: %@pt",[ud objectForKey:@"bestScore"]] fontName:@"Arial" fontSize:33];
-    CCLabelTTF *viewScoreLabel = [CCLabelTTF labelWithString:@"Rank" fontName:@"Arial" fontSize:33];
+    CCLabelTTF *bestScoreLabel = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"Best: %@pt",[ud objectForKey:@"bestScore"]] fontName:@"Arial" fontSize:33];
+    CCLabelTTF *viewScoreLabel = [CCLabelTTF labelWithString:@"Leaderboard" fontName:@"Arial" fontSize:33];
+    [viewScoreLabel setColor:ccc3(200, 30, 30)];
     
-//    CCMenuItemLabel *bestScoreItem = [CCMenuItemLabel itemWithLabel:bestScoreLabel];
+    CCMenuItemLabel *bestScoreItem = [CCMenuItemLabel itemWithLabel:bestScoreLabel];
     CCMenuItemLabel *currentScoreItem = [CCMenuItemLabel itemWithLabel:currentScoreLabel];
     
     CCMenuItemLabel *viewScoreItem = [CCMenuItemLabel itemWithLabel:viewScoreLabel block:^(id sender) {
@@ -70,8 +71,7 @@
     
     
     
-//    CCMenu *menu = [CCMenu menuWithItems:backItem,currentScoreItem,bestScoreItem, nil];
-    CCMenu *menu = [CCMenu menuWithItems:backItem,currentScoreItem,viewScoreItem, nil];
+    CCMenu *menu = [CCMenu menuWithItems:backItem,currentScoreItem,bestScoreItem,viewScoreItem, nil];
     [menu alignItemsVertically];
     [self addChild:menu];
     

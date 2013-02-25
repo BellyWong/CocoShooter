@@ -78,9 +78,11 @@
     
 
     
-    CCMenuItemFont *menuItem3 = [CCMenuItemFont itemWithString:@"Rank" block:^(id sender) {
+    CCMenuItemFont *menuItem3 = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
         [[GameKitHelper shared] showLeaderboard];
     }];
+    [menuItem3 setColor:ccc3(200, 30, 30)];
+
     menuItem1.color = ccc3(200,0,0);
 //    NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
 //    CCMenuItemFont *menuItem2 = [CCMenuItemFont itemWithString:item2Str];
@@ -89,6 +91,7 @@
 //    CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1,menuItem2,menuItem3, nil];
     CCMenu *titleMenu = [CCMenu menuWithItems:menuItem1,menuItem3, nil];
     [titleMenu alignItemsVertically];
+    
     [self addChild:titleMenu];
     
 }

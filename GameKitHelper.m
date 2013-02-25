@@ -39,15 +39,17 @@
             _gameCenterFeaturesEnabled = YES;
             
             // get localplayer's score.
-            NSArray *arr = @[localPlayer.playerID];
-            GKLeaderboard *board = [[GKLeaderboard alloc] initWithPlayerIDs:arr];
+            GKLeaderboard *board = [[GKLeaderboard alloc] init];
             board.timeScope = GKLeaderboardTimeScopeAllTime;
-            board.range = NSMakeRange(1, 1);
+            board.playerScope = GKLeaderboardTimeScopeToday;
             board.category = @"com.nobinobiru.shooting";
+            board.range = NSMakeRange(1, 3);
             [board loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
                 NSString *s = [NSString stringWithFormat:@"%lld",board.localPlayerScore.value];
                 [ud setObject:[NSString stringWithFormat:@"%@",s] forKey:@"bestScore"];
-                NSLog(@"scores is %@",scores);
+                if (scores){
+                    NSLog(@"score is %@",scores);
+                }
                 
                 
             }];
@@ -91,11 +93,14 @@
     
     GKScore *gkScore = [[GKScore alloc] initWithCategory:category];
     gkScore.value = value;
+    [gkScore setCategory:@"com.nobinobiru.shooting"];
 
     [gkScore reportScoreWithCompletionHandler:^(NSError *error) {
         [self setLastError:error];
         BOOL success = (error == nil);
-       [self.delegate onScoreSubmitted:success];
+        
+        NSLog(@"rank is %i",gkScore.rank);
+        [self.delegate onScoreSubmitted:success];
         
     }];
 }
@@ -105,20 +110,42 @@
 -(void) showLeaderboard
 {
     
-    GKLeaderboardViewController* leaderboardVC = [[GKLeaderboardViewController alloc] init] ;
-    if (leaderboardVC != nil)
-    {
-        leaderboardVC.leaderboardDelegate = self;
-        [self presentViewController:leaderboardVC];
-        
-
+    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController
+                                                         alloc] init];
+    if (gameCenterController != nil){
+        gameCenterController.gameCenterDelegate = self;
+        gameCenterController.viewState = GKGameCenterViewControllerStateLeaderboards;
+        gameCenterController.leaderboardTimeScope = GKLeaderboardTimeScopeAllTime;
+        gameCenterController.leaderboardCategory = @"com.nobinobiru.shooting";
+       [self presentViewController:gameCenterController];
+        [self retrieveTopTenScores];
     }
     
     
-    
-    
-    
 }
+- (void) retrieveTopTenScores
+{
+    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+    if (leaderboardRequest != nil)
+    {
+        leaderboardRequest.playerScope = GKLeaderboardPlayerScopeGlobal;
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeToday;
+        leaderboardRequest.category = @"com.nobinobiru.shooting";
+        leaderboardRequest.range = NSMakeRange(1,10);
+        [leaderboardRequest loadScoresWithCompletionHandler: ^(NSArray *scores, NSError *error) {
+            if (error != nil)
+            {
+                // Handle the error.
+            }
+            if (scores != nil)
+            {
+                NSLog(@"scores Is %@",scores);
+                // Process the score information.
+            }
+        }];
+    }
+}
+
 
 -(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
 {
