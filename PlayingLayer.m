@@ -80,14 +80,14 @@ static CCScene *scene;
     self.isTouchEnabled = YES;
     [self createEnemies];
     [self scheduleUpdate];
-    scoreLabel = [CCLabelTTF labelWithString:@"Score:0pt" fontName:@"verdana" fontSize:25];
+    scoreLabel = [CCLabelTTF labelWithString:@"Score:0pt" fontName:@"Marker Felt" fontSize:25];
     scoreLabel.position = ccp([Constants screenWidth] - 80,[Constants screenHeight] - 80);
     scoreLabel.color = ccc3(255, 10, 0);
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *item2Str = [NSString stringWithFormat:@"Best: %@",[ud objectForKey:@"bestScore"]];
     
-    CCLabelTTF *bestLabel = [CCLabelTTF labelWithString:item2Str fontName:@"Arial" fontSize:22];
+    CCLabelTTF *bestLabel = [CCLabelTTF labelWithString:item2Str fontName:@"Marker Felt" fontSize:22];
     bestLabel.position = ccp([Constants screenWidth] -80,[Constants screenHeight]  - 120);
     [self addChild:bestLabel z:-1];
     [self addChild:scoreLabel];
@@ -104,7 +104,7 @@ static CCScene *scene;
 {
 //    CCMenuItem
     
-    CCLabelTTF *titleLabel  = [CCLabelTTF labelWithString:@"Back" fontName:@"Arial" fontSize:23];
+    CCLabelTTF *titleLabel  = [CCLabelTTF labelWithString:@"Back" fontName:@"Marker Felt" fontSize:23];
     
     
     CCMenuItemLabel *backItem = [CCMenuItemLabel itemWithLabel:titleLabel target:self selector:@selector(onBack:)];
@@ -225,9 +225,12 @@ static CCScene *scene;
     
     
     [self unscheduleUpdate];
-    id action = [CCShaky3D actionWithRange:3 shakeZ:YES grid:ccg(10,30) duration:0.5];
+    
+    [[GameKitHelper shared] submitScore:currentScore category:@"com.nobinobiru.shooting"];
+    id action = [CCShaky3D actionWithRange:3 shakeZ:YES grid:ccg(10,30) duration:1];
     id reset = [CCCallBlock actionWithBlock:^{
         [[[self class] scene] getChildByTag:kPlayingLayer].grid = nil;
+
         
     }];
     id onEnd = [CCCallBlock actionWithBlock:^(void) {
@@ -244,7 +247,6 @@ static CCScene *scene;
         }
         [ud setObject:[NSString stringWithFormat:@"%i",currentScore]  forKey:@"currentScore"];
         
-        [[GameKitHelper shared] submitScore:currentScore category:@"com.nobinobiru.shooting"];
         
     }];
     
@@ -262,7 +264,6 @@ static CCScene *scene;
 {
     NSString *labelStr = [NSString stringWithFormat:@"Score:%ipt",num];
     [scoreLabel setString:labelStr];
-//    [GameKitHelper shared] presentVi
     
 }
 
@@ -274,6 +275,11 @@ static CCScene *scene;
     
 }
 
+-(void)onExit
+{
+    [super onExit];
+
+}
 
 
 

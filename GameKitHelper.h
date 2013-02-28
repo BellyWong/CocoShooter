@@ -16,6 +16,7 @@
 
 @property (nonatomic,strong) id delegate;
 
+
 @property (nonatomic,strong) NSError *lastError;
 +(id)shared;
 -(void)authenticateLocalPlayer;
